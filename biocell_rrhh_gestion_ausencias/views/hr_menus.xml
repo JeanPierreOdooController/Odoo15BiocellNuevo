@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+
+    <menuitem
+        id="menu_biocell_rrhh_gestion_ausencias_root"
+        name="Ausencias"
+        parent="hr_work_entry_contract_enterprise.menu_hr_payroll_root"
+        groups="biocell_rrhh_gestion_ausencias.group_hr_holidays_manager"
+        sequence="55"/>
+
+    <menuitem
+        id="menu_biocell_rrhh_gestion_ausencias_new_request"
+        parent="menu_biocell_rrhh_gestion_ausencias_root"
+        action="action_biocell_rrhh_gestion_ausencias_new_request"
+        sequence="1"/>
+
+    <menuitem
+        id="hr_holidays_menu_manager_approve_allocations"
+        name="Todas las Ausencias"
+        parent="menu_biocell_rrhh_gestion_ausencias_root"
+        action="action_biocell_rrhh_gestion_ausencias"
+        sequence="2"/>
+
+    <menuitem
+        id="hr_holidays_status_menu_configuration"
+        name="Tipos de Ausencias"
+        parent="menu_biocell_rrhh_gestion_ausencias_root"
+        action="action_hr_leave_type_it"
+        sequence="5"/>
+
+<!--	menu de vacaciones en beneficios sociales-->
+    <menuitem
+		id="menu_hr_vacation"
+		action="action_hr_vacation"
+		parent="biocell_rrhh_beneficios_personal.menu_biocell_rrhh_beneficios_personal"
+		sequence="3"
+		groups="biocell_rrhh_beneficios_personal.group_biocell_rrhh_beneficios_personal_root"
+	/>
+
+<!--	menus para reportes de vacaciones-->
+<!--	<menuitem-->
+<!--		id="menu_hr_vacation_manager"-->
+<!--		parent="biocell_rrhh_control_vacacional.menu_hr_vacation"-->
+<!--		action="action_hr_vacation_manager"-->
+<!--		sequence="2"-->
+<!--		groups="biocell_rrhh_gestion_ausencias.group_hr_holidays_manager"-->
+<!--	/>-->
+
+<!--	<menuitem-->
+<!--		id="menu_hr_vacation_saldo"-->
+<!--		parent="biocell_rrhh_control_vacacional.menu_hr_vacation"-->
+<!--		action="action_hr_vacation_saldo_wizard"-->
+<!--		sequence="3"-->
+<!--		groups="biocell_rrhh_gestion_ausencias.group_hr_holidays_manager"-->
+<!--	/>-->
+</odoo>

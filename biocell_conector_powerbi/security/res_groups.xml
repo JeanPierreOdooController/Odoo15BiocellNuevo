@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="powerbi_edit_api" model="res.groups">
+        <field name="name">PowerBi: Editar API Tokens</field>
+    </record>
+    <record id="powerbi_read_api" model="res.groups">
+        <field name="name">PowerBi: Ver API Tokens</field>
+    </record>
+</odoo>

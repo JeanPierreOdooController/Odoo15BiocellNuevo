@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>		
+		<record id="view_account_balance_period_book_tree_inherit" model="ir.ui.view">
+			<field name="name">account.balance.period.book.tree.inherit</field>
+			<field name="model">account.balance.period.book</field>
+			<field name="priority">1</field>
+			<field name="inherit_id" ref="biocell_panel_saldos_financieros_2.view_account_balance_period_book_tree"/>
+			<field name="arch" type="xml">
+				<field name="saldo_me" position="inside">
+					<field name="invoice_internal" optional="hide"/>
+					<field name="date_invoice_internal" optional="hide"/>				
+				</field>
+			</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,89 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* biocell_impresion_operaciones_contables
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "<strong>Accounting Date:</strong>"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "<strong>Company:</strong>"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "<strong>Journal:</strong>"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "<strong>Partner:</strong>"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "<strong>Reference:</strong>"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "Account"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "Amount in Currency"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "Analytic Account"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "Credit"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "Debit"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model:ir.actions.report,name:biocell_impresion_operaciones_contables.action_report_journal_entries
+msgid "Journal Entries"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "Label"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "Originator Tax"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "Partner"
+msgstr ""
+
+#. module: biocell_impresion_operaciones_contables
+#: model_terms:ir.ui.view,arch_db:biocell_impresion_operaciones_contables.report_journal_entry_document
+msgid "Taxes"
+msgstr ""

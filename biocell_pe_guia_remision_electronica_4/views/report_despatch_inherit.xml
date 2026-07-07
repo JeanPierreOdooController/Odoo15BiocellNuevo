@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_despatch_document_inherit" inherit_id="biocell_pe_facturacion_electronica_despatch.report_despatch_document">
+        <xpath expr="//t[@t-set='lines']" position="replace">
+            <t t-set="lines" t-value="o.line_ids.sorted(key=lambda l: (l.bio_package_id, l.product_id.default_code or ''), reverse=False)"/>
+        </xpath>
+        <xpath expr="//div[@id='footer']//tr[5]//td[2]" position="inside">
+          Fecha de emisión: <span t-field="o.issue_date"/>
+        </xpath>
+        <xpath expr="//div[@id='footer']//tr[6]//td[2]" position="inside">
+          Fecha de traslado: <span t-field="o.start_date"/>
+        </xpath>
+    </template>
+</odoo>

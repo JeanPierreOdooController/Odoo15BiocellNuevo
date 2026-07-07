@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="crm_biocell_conector_powerbi_key_record" model="powerbi.api.key">
+            <field name="name">crm_api_powerbi</field>
+            <field name="token">ufTyWIUquSXI8yKZXHpjQyrSzpJUub2XjdBVJFYwhSOYdJUma9V94sGIGJCHpXoa</field>
+        </record>
+
+        <record id="inventory_biocell_conector_powerbi_key_record" model="powerbi.api.key">
+            <field name="name">inventory_api_powerbi</field>
+            <field name="token">ufTyWIUquSXI8yKZXHpjQyrSzpJUub2XjdBVJFYwhSOYdJUma9V94sGIGJCHpXoa</field>
+        </record>
+
+        <record id="invoice_biocell_conector_powerbi_key_record" model="powerbi.api.key">
+            <field name="name">invoice_api_powerbi</field>
+            <field name="token">ufTyWIUquSXI8yKZXHpjQyrSzpJUub2XjdBVJFYwhSOYdJUma9V94sGIGJCHpXoa</field>
+        </record>
+    
+    </data>
+</odoo>

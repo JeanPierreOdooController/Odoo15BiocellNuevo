@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_quant_package_form_inherit" model="ir.ui.view">
+        <field name="name">stock.quant.package.form.inherit</field>
+        <field name="model">stock.quant.package</field>
+        <field name="inherit_id" ref="stock.view_quant_package_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='quant_ids']/tree" position="attributes">
+                <attribute name="default_order">product_id</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_logistic_despatch_form_inherit" model="ir.ui.view">
+        <field name="name">logistic.despatch.form.inherit</field>
+        <field name="model">logistic.despatch</field>
+        <field name="inherit_id" ref="logistic.view_logistic_despatch_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='line_ids']/tree" position="attributes">
+                <attribute name="default_order">product_id</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

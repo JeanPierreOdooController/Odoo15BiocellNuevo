@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!--
+		<record id="action_sale_order_button_excel_form_inherit" model="ir.ui.view">
+			<field name="name">sale.order.button.excel.form.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//header" position="inside">
+                    <button name="descargar_report_ventas" type="object" string="Presupuesto / Pedido Excel" class="btn-primary"/>
+				</xpath>
+				
+			</field>
+		</record>
+		
+-->
+
+	</data>
+</odoo>

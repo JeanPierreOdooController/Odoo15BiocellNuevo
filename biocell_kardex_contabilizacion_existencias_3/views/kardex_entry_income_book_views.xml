@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- View kardex.entry.income.book tree -->
+    <record id="view_kardex_entry_income_book_tree" model="ir.ui.view">
+        <field name="name">view.kardex.entry.income.book.tree</field>
+        <field name="model">kardex.entry.income.book</field>
+        <field name="inherit_id" ref="biocell_kardex_contabilizacion_existencias_advance.view_kardex_entry_income_book_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <field name="lot" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

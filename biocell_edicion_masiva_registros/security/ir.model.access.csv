@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_biocell_edicion_masiva_registros_line_system,mass.editing.line manager,model_biocell_edicion_masiva_registros_line,base.group_system,1,1,1,1
+access_biocell_edicion_masiva_registros_wizard_user,mass.editing.wizard user,model_biocell_edicion_masiva_registros_wizard,base.group_user,1,1,1,1

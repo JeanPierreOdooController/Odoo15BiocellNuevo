@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+
+    <template id="report_hc_document">
+            <div class="header">
+                        <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
+                        <div class="row pt-2" style="font-family: Arial;font-size:11px">
+                            <div class="col-12 pt-0 row">
+                                <div class="col-3">
+                                    <center><img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)"
+                                                     alt="Logo" style="width: 150px; top: 0 ; vertical-align: baseline;"
+                                                     class="mt-0 pt-0"
+                                                /></center>
+                                               
+
+                                </div>
+                                <div class="col-9">
+                                    <p style="font-size: 14px;">
+                                     BIOCELLS GENOMICS SOCIEDAD ANONIMA CERRADA - BIOGENOMICS S.A.C. <br/>
+                                        RUC: 20607531600 <br/>
+                                        Av. Santa Maria 140 Int. 201, Lima, Perú - CMS Grau <br/>
+                                        Telf: +51 1 6952357 <br/>
+                                        Correo Electrónico: biocells.peru@biocells.pe 
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            
+
+
+            <div class="article o_report_layout_standard" style="font-family: Arial;font-size:12px">
+                <div class="page" style="border-top: 2px solid black;">
+                    <div class="oe_structure"/>
+                        
+                    <div class="row pt-2" >
+                        <div  class="col-7" >
+                      
+                            <div  class="row" >
+                                <div  class="col-4" >
+                                    <p  class="m-0 p-1"><span class="font-weight-bold">CÓDIGO DE CIRUGÍA</span> </p>
+                                </div>
+                                <div  class="col-8 " >
+                                    <p  class="m-0 p-1">: <span  t-field="doc.sugery_order"/></p>
+                                </div>
+                            </div>
+                            <div  class="row" >
+                                <div  class="col-4 " >
+                                    <p  class="m-0 p-1"><span class="font-weight-bold">FECHA DE CIRUGÍA</span> </p>
+                                </div>
+                                <div  class="col-8 " >
+                                    <p  class="m-0 p-1">: <span  t-esc="doc.sugery_date.strftime('%Y-%m-%d') if doc.sugery_date else ' '"/></p>
+                                </div>
+                            </div>
+                             <div  class="row" >
+                                <div  class="col-4 " >
+                                    <p  class="m-0 p-1"><span class="font-weight-bold">HORA DE CIRUGÍA</span> </p>
+                                </div>
+                                <div  class="col-8 " >
+                                    <p  class="m-0 p-1">: <span  t-esc="doc.sugery_date.strftime('%H:%M') if doc.sugery_date else ' '"/></p>
+                                </div>
+                            </div>
+                            <div  class="row" >
+                                <div  class="col-4 " >
+                                    <p  class="m-0 p-1"><span class="font-weight-bold">CIRUJANO</span> </p>
+                                </div>
+                                <div  class="col-8 " >
+                                    <p  class="m-0 p-1">: <span  t-field="doc.name_doctor.name"/></p>
+                                </div>
+                            </div>
+                            <div  class="row" >
+                                <div  class="col-4 " >
+                                    <p  class="m-0 p-1"><span class="font-weight-bold">CENTRO MÉDICO</span> </p>
+                                </div>
+                                <div  class="col-8 " >
+                                    <p  class="m-0 p-1">: <span  t-field="doc.medic_center"/></p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-5">
+                            
+                            <div class="row" >
+                                <div  class="col-6 " >
+                                    <p  class="m-0 p-1"><span class="font-weight-bold">NOMBRE PACIENTE </span></p>
+                                </div>
+                                <div  class="col-6" >
+                                    <b><p  class="m-0 p-1">: <span  t-field="doc.name_patient"/></p></b>
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div  class="col-6 " >
+                                    <p  class="m-0 p-1"><span class="font-weight-bold">HISTORIA CLÍNICA </span></p>
+                                </div>
+                                <div  class="col-6" >
+                                    <b><p  class="m-0 p-1">: <span  t-field="doc.clinic_history"/></p></b>
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div  class="col-6 " >
+                                    <p  class="m-0 p-1"><span class="font-weight-bold">DNI/RUC</span></p>
+                                </div>
+                                <div  class="col-6" >
+                                    <b><p  class="m-0 p-1">: <span  t-field="doc.patient_vat"/></p></b>
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div  class="col-6 " >
+                                    <p  class="m-0 p-1"><span class="font-weight-bold">PROCEDIMIENTO</span></p>
+                                </div>
+                                <div  class="col-6" >
+                                    <b><p  class="m-0 p-1">: <span  t-field="doc.procedure_clinic"/></p></b>
+                                </div>
+                            </div>
+                           
+
+                        </div>
+                    </div>
+
+                    <br/>
+                    <table style=" border: 1px solid #000; border-collapse: collapse; width: 100%;">
+                        <thead style="display: table-row-group">
+                            <tr style="background-color: #f2f2f2;">
+                      
+                                <th style="border: 1px solid #000; padding: 5px;" name="th_cod" class="text-center">CÓDIGO</th>
+                                <th style="border: 1px solid #000; padding: 5px;  width: 40%;" name="th_description" class="text-center">DESCRIPCIÓN</th>
+                                <th style="border: 1px solid #000; padding: 5px;" name="th_um" class="text-center">LOTE</th>
+                                <th style="border: 1px solid #000; padding: 5px;" name="th_subtotal" class="text-center">CANT. </th>
+                                <th style="border: 1px solid #000; padding: 5px; width: 10%;" name="th_quantity" class="text-center">P. UNIT.</th>
+                                <th style="border: 1px solid #000; padding: 5px;  width: 10%;" name="th_subtotal" class="text-center">P. TOTAL </th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                        <t t-set="subtotal" t-value="0"/> 
+                            <t t-foreach="doc.move_ids_return" t-as="move">
+                                <t t-foreach="move.move_line_ids" t-as="line">
+                                    <t t-if="line.qty_consumida" >
+                                   <tr>
+                                      
+                                        <td name="td_code" class="text-center"
+                                            style="border: 1px solid #000; padding: 3px !important; margin: 0px !important;"  >
+                                                <span t-field="line.product_id.default_code"/>
+                                        </td>
+                                        <td name="td_code_product" class="text-right"
+                                            style="border: 1px solid #000; padding: 3px !important; margin: 0px !important;"  >
+                                                <span t-field="line.product_id.name"/>
+                                        </td>
+                                         <td class="text-center" name="td_unid"
+                                            style="border: 1px solid #000; padding: 3px !important; margin: 0px !important;"  >
+                                                <span t-field="line.sudo().lot_id.name"/>
+                                        </td>
+                                         <td class="text-center" name="td_cantidad"
+                                            style="border: 1px solid #000; padding: 3px !important; margin: 0px !important;"  >
+                                                <span t-field="line.qty_consumida"/>
+                                        </td>
+                                         <td class="text-right" name="td_precio_unit"
+                                            style="border: 1px solid #000; padding: 3px !important; margin: 0px !important;"  >
+                                               S/ <span t-esc="'%.2f'% move.price_unit_sale"/>
+                                        </td>
+                                         <td class="text-right" name="td_total"
+                                            style="border: 1px solid #000; padding: 3px !important; margin: 0px !important;"  >
+                                               S/ <t t-set="stotal" t-value="line.qty_consumida * move.price_unit_sale"/><t t-esc="'%.2f'% stotal"/>
+                                        </td>
+                                       <t t-set="subtotal" t-value="subtotal + stotal"/>
+                            </tr>
+                               </t>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <table style="width: 20%; float: right; ">
+                        <tr>
+                            <td style = " width: 10%; border: 1px solid black; padding: 3px !important; margin: 0px !important; background-color: #f2f2f2;"><b>SUBTOTAL</b></td>
+                            <td style = "width: 10%;  border: 1px solid black; padding: 3px !important; margin: 0px !important;" class="text-right">S/ <span t-esc="'%.2f'% subtotal"/></td>
+                        </tr>
+                        <tr>
+                            <td style = "width: 10%; border: 1px solid black;padding: 3px !important; margin: 0px !important; background-color: #f2f2f2;"><b>IGV</b></td>
+                            <td style = "width: 10%; border: 1px solid black;padding: 3px !important; margin: 0px !important;" class="text-right">S/ <span t-set="igv" t-value="subtotal*0.18"/><span t-esc=" '%.2f'% igv"/></td>
+                        </tr>
+                        <tr>
+                            <td style = "width: 10%; border: 1px solid black;padding: 3px !important; margin: 0px !important;background-color: #f2f2f2;"><b>TOTAL</b></td>
+                            <td style = "width: 10%; border: 1px solid black;padding: 3px !important; margin: 0px !important;" class="text-right">S/ <span t-set="sumtotal" t-value="igv + subtotal"/><span t-esc=" '%.2f'% sumtotal"/></td>
+                        </tr>
+                    </table>
+                    
+                    
+                   
+
+                    <table style="width: 100%; margin-top: 150px">
+                        <tr>
+                            <td class="font-weight-bold text-center" style="width: 35%; font-size: 14px; border-top: 1px solid black;">INSTRUMENTISTA</td>
+                            <td style="width: 30%;"></td>
+                            <td class="font-weight-bold text-center" style="width: 35%; font-size: 14px;  border-top: 1px solid black;">RECIBIDO POR</td>
+                        </tr>
+                    </table>
+                      
+                   
+                </div>
+            </div>
+            
+    </template>
+
+    <template id="report_hojacontrol">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="biocell_formato_hoja_control.report_hc_document" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+
+    <record id="paperformat_id_cp" model="report.paperformat">
+            <field name="name">Purchase Order Report</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">297</field>
+            <field name="page_width">210</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">30</field>
+            <field name="dpi">90</field>
+    </record>
+
+    <report
+            id="action_biocell_formato_hoja_control"
+            string="Hoja de Consumo PDF"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="biocell_formato_hoja_control.report_hojacontrol"
+            name="biocell_formato_hoja_control.report_hojacontrol"
+            print_report_name="'Hoja de control- %s' % (object.name or 'Hoja de control').replace('/','')"
+            paperformat="biocell_formato_hoja_control.paperformat_id_cp"
+    />
+
+    <record id="biocell_formato_hoja_control_xls" model="ir.actions.report">
+        <field name="name">Hoja de Consumo Xlsx</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">biocell_formato_hoja_control.biocell_formato_hoja_control_xlsx</field>
+        <field name="report_file">biocell_formato_hoja_control.biocell_formato_hoja_control_xlsx</field>
+        <field name="binding_model_id" ref="model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

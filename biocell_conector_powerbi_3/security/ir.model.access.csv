@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_biocell_conector_powerbi_3,access.sale.order.powerbi,model_biocell_conector_powerbi_3,base.group_user,1,1,1,1
+access_biocell_conector_powerbi_3_wizard,access.sale.order.powerbi.wizard,model_biocell_conector_powerbi_3_wizard,base.group_user,1,1,1,1

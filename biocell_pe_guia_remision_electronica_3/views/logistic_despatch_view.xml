@@ -1,0 +1,12 @@
+<odoo>
+    <record id="view_logistic_despatch_form_edi" model="ir.ui.view">
+        <field name="name">view.biocell_logistica_operativa.despatch.form.biocell_pe_facturacion_electronica_5</field>
+        <field name="model">biocell_logistica_operativa.despatch</field>
+        <field name="inherit_id" ref="biocell_logistica_operativa.view_logistic_despatch_form" />
+        <field name="arch" type="xml">
+            <field name="l10n_pe_dte_partner_status" position="after">
+                <field name="l10n_pe_dte_conflux_uid"/>
+            </field>
+        </field>
+    </record>
+</odoo>

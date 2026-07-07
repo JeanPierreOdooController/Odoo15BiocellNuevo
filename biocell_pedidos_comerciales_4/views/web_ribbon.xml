@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_order_form_boolean" model="ir.ui.view">
+		<field name="name">sale.order.form</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="biocell_devoluciones_comerciales_stock.view_order_form"/>
+		<field name="arch" type="xml">
+			<data>
+				<xpath expr="//button[@name='aprobarhc']" position="after">					
+                    <field name="aprob_id" readonly="1" invisible="1"/>
+                    <field name="desaprob_id" readonly="1" invisible="1"/>
+				</xpath>
+                <xpath expr="//div[@class='oe_title']" position="before">
+                    <widget name="web_ribbon" title="Desaprobado" bg_color="bg-danger" attrs="{'invisible': [('desaprob_id', '!=', True)]}"/>
+                    <widget name="web_ribbon" title="Aprobado" attrs="{'invisible': [('aprob_id', '!=', True)]}"/>
+                </xpath>
+			</data>
+		</field>
+	</record>
+</odoo>

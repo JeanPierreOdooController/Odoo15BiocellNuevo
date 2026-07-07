@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="action_res_partner_template_form_inherit" model="ir.ui.view">
+			<field name="name">res.partner.template.form.inherit</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='title']" position="after">
+					<field name="is_medic"  />
+					<field name="is_instrumentalist"  />
+					<field name="cmp"  />
+				</xpath>
+			
+				
+			</field>
+		</record>
+		
+	</data>
+</odoo>

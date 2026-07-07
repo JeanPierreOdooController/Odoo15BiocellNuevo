@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <menuitem action="biocell_importaciones_costos_adicionales.action_biocell_importaciones_costos_adicionales" 
+				  id="menu_biocell_importaciones_costos_adicionales_purchase" 
+				  parent="purchase.menu_procurement_management"
+				  sequence="99"
+				  groups="biocell_nucleo_contable_operativo_2.group_account_tables_user"/>
+	</data>
+</odoo>

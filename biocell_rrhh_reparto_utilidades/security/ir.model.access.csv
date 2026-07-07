@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_biocell_rrhh_reparto_utilidades_manager,hr.utilities.it.group,model_biocell_rrhh_reparto_utilidades,group_biocell_rrhh_reparto_utilidades_root,1,1,1,1
+access_biocell_rrhh_reparto_utilidades_line_manager,hr.utilities.it.line.group,model_biocell_rrhh_reparto_utilidades_line,group_biocell_rrhh_reparto_utilidades_root,1,1,1,1
+access_hr_utilities_print_wizard_manager,hr.utilities.print.wizard.group,model_hr_utilities_print_wizard,group_biocell_rrhh_reparto_utilidades_root,1,1,1,0

@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_biocell_conector_powerbi,access.sale.powerbi.api,model_sale_biocell_conector_powerbi,base.group_user,1,1,1,1
+access_invoice_biocell_conector_powerbi,access.invoice.powerbi.api,model_invoice_biocell_conector_powerbi,base.group_user,1,1,1,1
+access_inventory_biocell_conector_powerbi,access.inventory.powerbi.api,model_inventory_biocell_conector_powerbi,base.group_user,1,1,1,1
+access_biocell_conector_powerbi_key_public,access.powerbi.api.key.public.,model_biocell_conector_powerbi_key,base.group_user,1,0,0,0
+access_biocell_conector_powerbi_key_edit,access.powerbi.api.key.edit,model_biocell_conector_powerbi_key,powerbi_edit_api,1,1,0,0
+access_temporal_valued_kardex,access.temporal.valued.kardex,model_temporal_valued_kardex,base.group_user,1,1,1,1
+

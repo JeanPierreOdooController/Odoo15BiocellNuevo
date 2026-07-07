@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+	<menuitem
+		id="menu_biocell_rrhh_beneficios_personal"
+		name="Beneficios Sociales"
+		parent="hr_work_entry_contract_enterprise.menu_hr_payroll_root"
+		sequence="70"
+		groups="biocell_rrhh_beneficios_personal.group_biocell_rrhh_beneficios_personal_root"
+	/>
+	<menuitem
+		id="menu_hr_gratification"
+		action="action_hr_gratification"
+		parent="menu_biocell_rrhh_beneficios_personal"
+		sequence="1"
+		groups="biocell_rrhh_beneficios_personal.group_biocell_rrhh_beneficios_personal_root"
+	/>
+	<menuitem
+		id="menu_hr_cts"
+		action="action_hr_cts"
+		parent="menu_biocell_rrhh_beneficios_personal"
+		sequence="2"
+		groups="biocell_rrhh_beneficios_personal.group_biocell_rrhh_beneficios_personal_root"
+	/>
+	<menuitem
+		id="menu_hr_liquidation"
+		action="action_hr_liquidation"
+		parent="menu_biocell_rrhh_beneficios_personal"
+		sequence="4"
+		groups="biocell_rrhh_beneficios_personal.group_biocell_rrhh_beneficios_personal_root"
+	/>
+</odoo>

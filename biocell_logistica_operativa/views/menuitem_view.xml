@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem action="biocell_logistica_operativa.action_logistic_despatch_tree" id="menu_action_logistic_despatch_tree" parent="biocell_logistica_operativa.biocell_logistica_operativa_operations"/>
+</odoo>

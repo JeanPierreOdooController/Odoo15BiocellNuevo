@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_import_move_apertura_it_group_user,import.move.apertura.it.group.user,biocell_carga_saldos_apertura.model_import_move_apertura_it,biocell_nucleo_contable_operativo_2.group_account_tables_user,1,1,1,1
+access_import_move_apertura_it_line_group_user,import.move.apertura.it.line.group.user,biocell_carga_saldos_apertura.model_import_move_apertura_it_line,biocell_nucleo_contable_operativo_2.group_account_tables_user,1,1,1,1

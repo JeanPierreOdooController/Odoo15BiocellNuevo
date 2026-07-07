@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="vehicule_deafult_it" model="ir.ui.view">
+            <field name="name">vehicule.default.it</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='driver_id']" position="attributes">
+                    <attribute name="domain">[('logistic_is_driver','=', True)]</attribute>
+                </xpath>
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="vehi_default"/>
+                </xpath>
+            </field>
+    </record>
+
+    <record id="biocell_pe_facturacion_electronica_despatch_driver_it" model="ir.ui.view">
+        <field name="name">l10n.pe.edi.extended.despatch.driver.it</field>
+        <field name="model">biocell_logistica_operativa.despatch</field>
+        <field name="inherit_id" ref="biocell_pe_facturacion_electronica_despatch.view_logistic_despatch_form_edi"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vehicle_id']" position="attributes">
+                <attribute name="domain">[('vehi_default','=', True)]</attribute>
+            </xpath>
+            <xpath expr="//field[@name='driver_id']" position="attributes">
+                <attribute name="domain">[('logistic_is_driver','=', True)]</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

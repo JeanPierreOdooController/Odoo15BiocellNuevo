@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_despatch_document">
+        <t t-call="web.basic_layout">
+            <t t-set="o" t-value="o.with_context(lang=lang)"/>
+           <div class="page" style="font-size: 0.75rem;">
+                <div id="despatch_header" class="row">
+                     <div t-attf-class="#{'col-2' if report_type != 'html' else 'col-12 col-sm-2'} mb-2" style="text-align: right;">
+                        <img t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" style="width:100%; margin-top: 25%;"/>
+                        
+                       
+                    </div>
+                    <div  t-attf-class="#{'col-5' if report_type != 'html' else 'col-12 col-sm-5'} mb-2">
+
+                        <table class="table5">
+                            <tr class="table5_row"  style="font-size:14px">
+                            <td class="table5_col_1"><b><span t-field="o.company_id.partner_id.name"/> <t t-if="o.journal_id.biocell_gestion_sedes_empresa_id and o.journal_id.biocell_gestion_sedes_empresa_id.name"> / <span t-esc="o.journal_id.biocell_gestion_sedes_empresa_id.name.upper()"/></t></b></td>
+                            </tr>
+                            <tr class="table5_row" style="font-size:14px">
+                        <td class="table5_col_2">
+                            <span t-esc="o.journal_id.biocell_gestion_sedes_empresa_id.partner_id.street_name or ''"/> 
+                            <span t-esc="o.journal_id.biocell_gestion_sedes_empresa_id.partner_id.street_number or ''"/> 
+                            <span t-esc="o.journal_id.biocell_gestion_sedes_empresa_id.partner_id.street_number2 or ''"/> 
+                            <span t-esc="o.journal_id.biocell_gestion_sedes_empresa_id.partner_id.street2 or ''"/>
+                            <t t-if="o.journal_id.biocell_gestion_sedes_empresa_id.partner_id.l10n_pe_district">
+                                , <span t-esc="o.journal_id.biocell_gestion_sedes_empresa_id.partner_id.l10n_pe_district.name or ''"/>
+                            </t>
+                            <t t-if="o.journal_id.biocell_gestion_sedes_empresa_id.partner_id.city_id">
+                                , <span t-esc="o.journal_id.biocell_gestion_sedes_empresa_id.partner_id.city_id.name or ''"/>
+                            </t>
+                            <t t-if="o.journal_id.biocell_gestion_sedes_empresa_id.partner_id.state_id">
+                                , <span t-esc="o.journal_id.biocell_gestion_sedes_empresa_id.partner_id.state_id.name or ''"/>
+                            </t>
+                            <t t-if="o.journal_id.biocell_gestion_sedes_empresa_id.partner_id.country_id">
+                                , <span t-esc="o.journal_id.biocell_gestion_sedes_empresa_id.partner_id.country_id.name or ''"/>
+                            </t>
+                        </td>
+                            </tr>
+                            
+                            <tr class="table5_row" style="font-size:14px">
+                            <td class="table5_col_2">
+                                <span t-esc="o.company_id.partner_id.street_name or ''"/> 
+                                <span t-esc="o.company_id.partner_id.street_number or ''"/> 
+                                <span t-esc="o.company_id.partner_id.street_number2 or ''"/> 
+                                <span t-esc="o.company_id.partner_id.street2 or ''"/>
+                                <t t-if="o.company_id.partner_id.l10n_pe_district">
+                                    , <span t-esc="o.company_id.partner_id.l10n_pe_district.name or ''"/>
+                                </t>
+                                <t t-if="o.company_id.partner_id.city_id">
+                                    , <span t-esc="o.company_id.partner_id.city_id.name or ''"/>
+                                </t>
+                                <t t-if="o.company_id.partner_id.state_id">
+                                    , <span t-esc="o.company_id.partner_id.state_id.name or ''"/>
+                                </t>
+                                <t t-if="o.company_id.partner_id.country_id">
+                                    , <span t-esc="o.company_id.partner_id.country_id.name or ''"/>
+                                </t>
+                            </td>
+                            </tr>
+                            <tr class="table5_row" style="font-size:14px">
+                            <td class="table5_col_2"><span t-field="o.company_id.partner_id.phone"/></td>
+                            </tr>
+                            <tr class="table5_row" style="font-size:14px">
+                            <td class="table5_col_2"><span t-field="o.company_id.partner_id.email"/></td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+
+                    <div t-attf-class="#{'col-5' if report_type != 'html' else 'col-12 col-sm-5'} mb-2 order-first order-sm-last">
+                        <div class="card mb-3 text-center" style="border-color: #9EB548; border-width: 2px; border-radius: 10px;  padding: 10px;">
+                            <div >
+                                <h6>
+                                    <span class="font-weight-bold">RUC: <t t-esc="o.company_id.vat"/></span>
+                                </h6>
+                                <h6>
+                                    <span class="font-weight-bold">GUIA DE REMISIÓN ELECTRÓNICA - REMITENTE</span>
+                                </h6>
+                                <h6><span class="font-weight-bold">NÚMERO </span> <span class="font-weight-bold" t-esc="o.name or 'NO VALID'"/>
+                                </h6>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                  <table style="border-collapse: collapse; width: 100%;">
+                  <tr style="font-size:14px">
+                    <td style="width: 50%; border-top: 1px  solid #9EB548; border-left: 1px solid #9EB548; padding-left: 15px; padding-right: 15px;font-weight: bold;">Destinatario:</td>
+                    <td style=" width: 50%; border-top: 1px  solid #9EB548; border-left: 1px solid #9EB548; border-right: 1px solid #9EB548; padding-left: 15px;padding-right: 15px; font-weight: bold;">Remitente: </td>
+                  </tr>
+                  <tr style="font-size:14px">
+                    <td style="border-left: 1px solid #9EB548; border-bottom: 1px solid #9EB548; padding-left: 15px;padding-right: 15px; font-weight: bold;">
+                    Atención: <span class="text" t-field="o.partner_id.commercial_partner_id.name"/><br/>
+                    Correo electrónico: <span class="text" t-field="o.partner_id.commercial_partner_id.email"/><br/>
+                    Dirección: <span class="text" t-esc="o.partner_id.street_name or ''"/><span class="text" t-esc="o.partner_id.street_number or ''"/> 
+                                        <span class="text" t-esc="o.partner_id.street_number2 or ''"/> 
+                                        <span class="text" t-esc="o.partner_id.street2 or ''"/>
+                                        <t t-if="o.partner_id.l10n_pe_district">
+                                            , <span class="text" t-esc="o.partner_id.l10n_pe_district.name or ''"/>
+                                        </t>
+                                        <t t-if="o.partner_id.city_id">
+                                            , <span class="text-nowrap" t-esc="o.partner_id.city_id.name or ''"/>
+                                        </t>
+                                        <t t-if="o.partner_id.state_id">
+                                            , <span class="text-nowrap" t-esc="o.partner_id.state_id.name or ''"/>
+                                        </t>
+                                        <t t-if="o.partner_id.country_id">
+                                            , <span class="text-nowrap" t-esc="o.partner_id.country_id.name or ''"/>
+                                        </t> <br/>
+                    Telf.: <span class="text" t-field="o.partner_id.commercial_partner_id.phone"/><br/>
+                    Ruc: <span class="text" t-field="o.partner_id.commercial_partner_id.vat"/><br/>
+                    <!-- Punto de Partida: Av. Santa Maria N° 140 int. 201 - Miraflores <br/> -->
+                    Punto de Partida: <span class="text" t-field="o.origin_address_id.street"/> - <span class="text" t-field="o.origin_address_id.district_id.name"/> <br/>
+                    Punto de Llegada: <span class="text" t-field="o.delivery_address_id.street"/> - <span class="text" t-field="o.delivery_address_id.district_id.name"/> 
+                    </td>
+                    <td style="border-left: 1px solid #9EB548;border-bottom: 1px solid #9EB548; border-right: 1px solid #9EB548; padding-left: 15px;padding-right: 15px;  font-weight: bold;">
+                    <span t-field="o.company_id.partner_id.name"/> <br/>
+                    Dirección: <span class="text" t-esc="o.origin_address_id.street_name or ''"/> 
+                                        <span class="text" t-esc="o.origin_address_id.street_number or ''"/> 
+                                        <span class="text" t-esc="o.origin_address_id.street_number2 or ''"/> 
+                                        <span class="text" t-esc="o.origin_address_id.street2 or ''"/>
+                                        <t t-if="o.origin_address_id.l10n_pe_district">
+                                            , <span class="text" t-esc="o.origin_address_id.l10n_pe_district.name or ''"/>
+                                        </t>
+                                        <t t-if="o.origin_address_id.city_id">
+                                            , <span class="text-nowrap" t-esc="o.origin_address_id.city_id.name or ''"/>
+                                        </t>
+                                        <t t-if="o.origin_address_id.state_id">
+                                            , <span class="text-nowrap" t-esc="o.origin_address_id.state_id.name or ''"/>
+                                        </t>
+                                        <t t-if="o.origin_address_id.country_id">
+                                            , <span class="text-nowrap" t-esc="o.origin_address_id.country_id.name or ''"/>
+                                        </t><br/>
+                    Placa del vehículo: <span t-field="o.vehicle_id.license_plate"/><br/>
+                    Marca del vehículo: <span t-field="o.vehicle_id.model_id.name"/><br/>
+                    Jefe Bodega: <span t-field="o.user_id.name"/><br/>
+                    Correo electrónico: <span t-field="o.company_id.email"/><br/>
+                   
+                    </td>
+                  </tr>
+                 
+                    
+                    
+                </table>
+                
+                <br/>
+                <table class="table table-sm o_main_table min-vh-50" name="despatch_line_table" style="border-collapse: collapse; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid black;">Nº</th>
+                            <th style="border: 1px solid black;" name="th_product_code" class="text-left"><span>Código</span></th>
+                            <th style="border: 1px solid black; width: 300px;" name="th_description" class="text-left"><span>Descripción</span></th>
+                            <th style="border: 1px solid black;" name="th_quantity" class="text-right"><span>Cantidad</span></th>
+                            <th style="border: 1px solid black; display:none;" name="th_subtotal" class="text-right">
+                                <span>WEIGHT</span>
+                            </th>
+                            <th style="border: 1px solid black;" class="text-center"><span>Categoría</span></th>
+                            <th style="border: 1px solid black;" class="text-center"><span>Lote #</span></th>
+                            <th style="border: 1px solid black;" class="text-center"><span>Expiración</span></th>
+                            <th style="border: 1px solid black;" t-if="o.bio_valorizar" class="text-center"><span>P/U</span></th>
+                            <th style="border: 1px solid black;" t-if="o.bio_valorizar" class="text-center"><span>Total</span></th>
+                            <th style="border: 1px solid black;" class="text-center"><span>Cant.Dev.</span></th>
+                            <th style="border: 1px solid black;" class="text-center"><span>Cant.Cons.</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="despatch_tbody">
+                        <t t-set="lines" t-value="o.line_ids.sorted(key=lambda l: (l.bio_package_id,-l.sequence, -l.id), reverse=True)"/>
+                        <t t-set="item_number" t-value="1"/>
+                        <t t-set="cantidad" t-value="0"/>
+                        <t t-set="package_id" t-value="0"/>
+                        <t t-set="package_subtotal" t-value="0"/>
+                        <t t-set="other_subtotals" t-value="1"/>
+                        <t t-foreach="lines" t-as="line">
+                            <t t-if="line.bio_package_id.id != package_id">
+                                <t t-if="other_subtotals==0">
+                                    <tr>
+                                        <td colspan="3" style="border: 1px solid black; text-align: right;"><strong>SUBTOTAL:</strong></td>
+                                        <td style="border: 1px solid black; text-align: right;"><strong><span t-esc="package_subtotal"/></strong></td>
+                                        <td colspan="7"/>
+                                    </tr>
+                                </t>
+                                <tr>
+                                    <td colspan="11" style="border: 1px solid black; text-align: left;"><strong>Paquete: <span t-field="line.bio_package_id.name"/></strong></td>
+                                </tr>
+                                <t t-set="other_subtotals" t-value="0"/>
+                                <t t-set="package_subtotal" t-value="0"/>
+                            </t>
+                            <tr>
+                                <t name="despatch_line">
+                                    <td style="border: 1px solid black;"><t t-esc="item_number"/></td>
+                                    <td style="border: 1px solid black;"><span t-field="line.product_id.default_code" t-id="line.product_id"/></td>
+                                    <td style="border: 1px solid black;" name="despatch_line_name"><span t-field="line.name" t-options="{'widget': 'text'}"/></td>
+                                    <td style="border: 1px solid black;" class="text-right">
+                                        <span t-field="line.quantity"/>
+                                    </td>
+                                    <td style="border: 1px solid black; display:none;" class="text-right o_weight_total">
+                                        <span class="text-nowrap" t-field="line.weight"/>
+                                    </td>
+                                    <td style="border: 1px solid black;" class="text-center">
+                                        <span t-field="line.product_id.categ_id.name"/>
+                                    </td>
+                                    <td style="border: 1px solid black;" class="text-center">
+                                        <span t-field="line.bio_lote"/>
+                                    </td>
+                                    <td style="border: 1px solid black;" class="text-center">
+                                        <span t-field="line.bio_fecven"/>
+                                    </td>
+                                    <td style="border: 1px solid black;" t-if="o.bio_valorizar"><span t-field="line.bio_pu"/></td>
+                                    <td style="border: 1px solid black;" t-if="o.bio_valorizar"><span t-field="line.bio_total"/></td>
+                                    <td style="border: 1px solid black;" class="text-center"/>
+                                    <td style="border: 1px solid black;" class="text-center"/>
+                                </t>
+                            </tr>
+                            <t t-set="item_number" t-value="item_number + 1"/>
+                            <t t-set="cantidad" t-value="cantidad + line.quantity"/>
+                            <t t-set="package_id" t-value="line.bio_package_id.id"/>
+                            <t t-set="package_subtotal" t-value="package_subtotal + line.quantity"/>
+                        </t>
+                        <tr>
+                            <td colspan="3" style="border: 1px solid black; text-align: right;"><strong>SUBTOTAL:</strong></td>
+                            <td style="border: 1px solid black; text-align: right;"><strong><span t-esc="package_subtotal"/></strong></td>
+                            <td colspan="7"/>
+                        </tr>
+                        <tr>
+                        <t t-if="o.bio_valorizar">
+                        <td colspan="11" style="border: 1px solid black; text-align: right;">Total Cant. <span t-esc="cantidad"/> </td>
+                        </t> 
+                        <t t-else="">
+                           <td colspan="9" style="border: 1px solid black; text-align: right;">Total Cant. <span t-esc="cantidad"/> </td>
+                        </t>
+                      </tr>
+                    </tbody>
+                   
+                </table>
+                
+                <br/>
+
+                <div id="notes" class="row">
+                    <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-12 col-sm-6'} mb-2">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <strong>NOTA:</strong><br/>
+                                <span t-field="o.bio_nota" t-options="{'widget': 'html'}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-12 col-sm-6'} mb-2">
+                        <table width="100%" border="0" cellpadding="2" cellspacing="0">
+                            <tr>
+                                <td style="padding:5px;text-align: center;"><hr style="width:100%;display:block;"/>Fecha de Envío</td>
+                                <td style="padding:5px;text-align: center;"><hr/>Firma Emisor</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:5px;text-align: center;"><hr/>Fecha de traslado</td>
+                                <td style="padding:5px;text-align: center;"><hr/>Firma Transportista</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:5px;text-align: center;"><hr/>Fecha recibe</td>
+                                <td style="padding:5px;text-align: center;"><hr/>Firma Destinatario</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div id="footer" class="row">
+                    <div t-attf-class="#{'col-8' if report_type != 'html' else 'col-12 col-sm-8'} mb-2">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 50%;"></td>
+                                <td style="width: 50%;"> Forma de Pago: <span t-field="o.bio_payment_term"/></td>
+                            </tr>
+                             <tr>
+                                <td>Elaboró: <span t-field="o.bio_vendedor"/></td>
+                                <td></td>
+                            </tr>
+                             <tr>
+                                <td>No. de Gaveta: <span t-field="o.bio_nro_gaveta"/></td>
+                                <td></td>
+                            </tr>
+                             <tr>
+                                <td>Nombre Transportista:  <span t-field="o.driver_id.name"/></td>
+                                <td>RUC/DNI Transportista: <span t-field="o.driver_id.vat"/></td>
+                            </tr>
+                             <tr>
+                                <td>Licencia Transportista:  <span t-field="o.driver_id.biocell_logistica_operativa_license_number"/></td>
+                                <td></td>
+                            </tr>
+                           
+                            <tr>
+                                <td>Orden de Venta: <span t-field="o.bio_name_sale"/></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-12 col-sm-4'} mb-2">
+                        <table width="100%">
+                            <tr>
+                                
+                                <td style="width: 75%; padding-left:50px;
+                                padding-right:50px;text-align: center;"><hr/>"SE VERIFICAN CONDICIONES
+                                DE TRANSPORTE DE LOS PRODUCTOS RECIBIDOS"</td>
+                              
+                            </tr>
+                           
+                        </table>
+                    </div>
+                </div>
+
+
+
+                <div id="despatch_info" class="row">
+                    <div class="col-12 mb-0">
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <div id="despatch_footer" class="row">
+                                    <div t-attf-class="#{'col-3' if report_type != 'html' else 'col-12 col-sm-3'} mb-2">
+                                        <img t-if="o.l10n_pe_dte_qr" t-att-src="'/report/barcode/QR/%s'%(o.l10n_pe_dte_qr)" class="img-fluid img-thumbnail rounded mx-auto d-block" style="width:135px;height:135px;"/>
+                                    </div>
+                                    <div t-attf-class="#{'col-9' if report_type != 'html' else 'col-12 col-sm-9'} mb-2">
+                                        <p>Printed representation of the <span class="font-weight-bold text-uppercase">Electronic Despatch</span> <span class="font-weight-bold" t-esc="o.name or 'NO VALID'"/>, visit <span class="font-weight-bold" t-esc="o.company_id.l10n_pe_dte_control_url or 'NO VALID'"/>
+                                        </p>
+                                        <p><span t-esc="o.company_id.l10n_pe_dte_authorization_message or ' '"/></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

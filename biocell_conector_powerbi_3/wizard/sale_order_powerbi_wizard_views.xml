@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="biocell_conector_powerbi_3_action_server" model="ir.actions.server">
+        <field name="name">PowerBi Ventas</field>
+        <field name="model_id" ref="model_biocell_conector_powerbi_3_wizard"/>
+        <field name="binding_model_id" ref="model_biocell_conector_powerbi_3_wizard"/>
+        <field name="state">code</field>
+        <field name="code">action=model.get_report()</field>
+    </record>
+
+
+    <menuitem
+        id="biocell_conector_powerbi_3_menu"
+        name="PowerBi Ventas"
+        action="biocell_conector_powerbi_3_action_server"
+        parent="sale.menu_sale_report"
+        sequence="10"/>
+</odoo>

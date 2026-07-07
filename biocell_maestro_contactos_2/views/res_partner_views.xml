@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_seller_it" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.seller.it</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_instrumentalist']" position="after">
+                <field name="is_seller"/>
+            </xpath>
+             <xpath expr="//page[@name='sales_purchases']/group[@name='container_row_2']/group[@name='sale']/field[@name='user_id']" position="after">
+                <field name="seller_id"/>
+            </xpath>            
+        </field>
+    </record>
+</odoo>

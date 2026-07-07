@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_biocell_flujo_procedimientos_salud_it" model="res.groups">
+        <field name="name">Manejo de procedimiento clinico</field>            
+    </record>
+	<menuitem id='menu_action_procedure_clinic_tree_it' 
+	parent='sale.sale_order_menu' 
+	action="biocell_flujo_procedimientos_salud.action_procedure_clinic_form"
+	sequence="20"/>
+</odoo>

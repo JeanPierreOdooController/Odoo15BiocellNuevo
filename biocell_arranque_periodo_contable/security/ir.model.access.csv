@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_biocell_arranque_periodo_contable_group_user,account.opening.it.group.user,biocell_arranque_periodo_contable.model_biocell_arranque_periodo_contable,biocell_nucleo_contable_operativo_2.group_account_tables_user,1,1,1,1

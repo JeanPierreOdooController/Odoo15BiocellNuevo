@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_facturacion_venta_pendiente_tree_it_buton" model="ir.ui.view">
+            <field name="name">facturacion.venta.pendiente.tree.buton.2</field>
+            <field name="model">facturacion.venta.pendiente</field>
+            <field name="inherit_id" ref="biocell_devoluciones_comerciales_stock.view_facturacion_venta_pendiente_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='subtotal']" position="after">
+                    <button name="action_redirect_to_order_it" string="Pedido" type="object" class="btn-primary" icon="fa-link"/>
+                </xpath>
+            </field>
+    </record>
+    
+</odoo>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record model="ir.ui.view" id="view_stock_report_onhand_purchase_plain_tree">
+		<field name="name">stock.report.onhand.purchase.plain.tree</field>
+		<field name="model">stock.report.onhand.purchase.plain</field>
+		<field name="arch" type="xml">
+			<tree create="0" edit="0" delete="0">
+				<field name="purchase_name"/>
+				<field name="partner_id"/>
+				<field name="partner_ref"/>
+				<field name="invoice_number"/>
+				<field name="nro_guia_compra"/>
+				<field name="date_order"/>
+				<field name="date_invoice"/>
+				<field name="date_picking"/>
+				<field name="product_id"/>
+				<field name="qty_req"/>
+				<field name="qty_received"/>
+				<field name="qty_waiting"/>
+				<field name="purchase_id" optional="hide"/>
+				<field name="purchase_line_id" optional="hide"/>
+				<field name="picking_id" optional="hide"/>
+				<field name="stock_move_id" optional="hide"/>
+				<field name="invoice_id" optional="hide"/>
+				<field name="account_move_line_id" optional="hide"/>
+				<field name="company_id" optional="show"/>
+			</tree>
+		</field>
+	</record>
+
+
+	<record id="view_stock_report_onhand_purchase_plain_filter" model="ir.ui.view">
+		<field name="name">stock.report.onhand.purchase.plain.filter</field>
+		<field name="model">stock.report.onhand.purchase.plain</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="product_id"/>
+				<field name="purchase_name"/>
+				<field name="partner_id"/>
+				<field name="invoice_number"/>
+				<field name="nro_guia_compra"/>
+				<field name="partner_ref"/>
+
+				<group expand="0" string="Group By">
+					<filter string="Proveedor" name="proveedor" domain="[]" context="{'group_by': 'partner_id'}"/>
+					<filter string="Factura" name="factura" domain="[]" context="{'group_by': 'invoice_number'}"/>
+					<filter string="Fecha de pedido" name="fechapedido" domain="[]" context="{'group_by': 'date_order'}"/>
+					<filter string="Fecha de factura" name="fechafactura" domain="[]" context="{'group_by': 'date_invoice'}"/>
+					<filter string="Fecha de Albarán de ingreso" name="fechapicking" domain="[]" context="{'group_by': 'date_picking'}"/>
+				</group>
+			</search>
+		</field>
+	</record>
+	
+		<record id="action_stock_report_onhand_purchase_plain" model="ir.actions.act_window">
+			<field name="name">BackOrder Compras - Reporte plano</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">stock.report.onhand.purchase.plain</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+
+
+	<menuitem id="menu_stock_report_onhand_purchase_plain"
+			action="action_stock_report_onhand_purchase_plain"
+			parent="purchase.purchase_report"
+			sequence="6"/>
+
+
+	<menuitem id="menu_stock_report_onhand_purchase_plain_stock1111"
+                  parent="stock.menu_warehouse_report" 
+                  action="action_stock_report_onhand_purchase_plain"
+                  sequence="99" />
+
+
+	
+</odoo>

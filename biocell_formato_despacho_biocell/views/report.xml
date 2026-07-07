@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <template id="report_picking_biocell" name="report_picking_biocell"
+        inherit_id="stock.report_picking">
+        <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+            <div class="header">
+                <table style="width:55%; table-layout: fixed; font-size:.75em;">
+                    <tr>
+                        <td
+                            style="width: 35%; text-align: center; vertical-align: middle; padding-right:25px;">
+                            <img t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)"
+                                style="width:100%; height:auto;" />
+                        </td>
+                        <td>
+                            <strong>
+                                <span t-field="o.company_id.partner_id.name" />
+                            </strong>
+                            <div>
+                                <span t-esc="o.company_id.partner_id.street or ''" />
+                                <t t-if="o.company_id.partner_id.l10n_pe_district"> , <span
+                                        t-esc="o.company_id.partner_id.l10n_pe_district.name or ''" />
+                                </t>
+                                <t t-if="o.company_id.partner_id.city_id"> , <span
+                                        t-esc="o.company_id.partner_id.city_id.name or ''" />
+                                </t>
+                                <t t-if="o.company_id.partner_id.state_id"> , <span
+                                        t-esc="o.company_id.partner_id.state_id.name or ''" />
+                                </t>
+                                <t t-if="o.company_id.partner_id.country_id"> , <span
+                                        t-esc="o.company_id.partner_id.country_id.name or ''" />
+                                </t>
+                            </div>
+                            <span t-field="o.company_id.partner_id.phone" />
+                            <br />
+                            <span t-field="o.company_id.partner_id.email" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="footer">
+                <div style="width:100%; text-align:center;">
+                    <span>Página</span>
+                    <span class="page" /> de <span class="topage" />
+                </div>
+            </div>
+            <t t-call="web.external_layout">
+                <style>
+                    .page{
+                    margin:0px;
+                    padding:0px;
+                    }
+                    table{
+                    width: 100%;
+                    table-layout: fixed;
+                    }
+                    table td{
+                    padding: 5px;
+                    }
+                    #content{
+                    margin-top:20px;
+                    }
+                    #description td{
+                    border: 2px #A3B71A solid;
+                    }
+                    #content td{
+                    border: 1px black solid;
+                    vertical-align:middle;
+                    }
+                    #content tr td:first-child{
+                    width:40px;
+                    }
+                    #content tr td:nth-child(2){
+                    width:130px;
+                    }
+                    #content tr td:nth-child(3){
+                    width:250px;
+                    }
+                    #content tr td:nth-child(4){
+                    text-align:right;
+                    width:100px;
+
+                    }
+                    #content tr td:nth-child(5){
+                    text-align:center;
+
+                    }
+                    #content tr td:nth-child(6){
+                    text-align:center;
+
+                    }
+                    #content tr td:nth-child(7){
+                    text-align:center;
+
+                    }
+                </style>
+                <div class="page">
+
+                    <table id="description">
+                        <tr>
+                            <td style="width:50%">
+                                <span>
+                                    <strong>Dirección de almacén:</strong>
+                                </span>
+                                <div t-field="o.picking_type_id.warehouse_id.partner_id"
+                                    t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}" />
+                            </td>
+                            <td style="width:50%">
+                                <strong>
+                                    Nombre del Paciente - DNI/RUC:
+                                </strong>
+                                  <br />
+                                  <span
+                                    t-esc="o.name_patient" /> - <span t-esc="o.patient_vat" />
+                                  <br />
+                                Centro Médico: <br />
+                                  <t t-if="o.medic_center">
+                                    <span t-esc="o.medic_center" />
+                                </t>
+                                  <t
+                                    t-if="not o.medic_center">
+                                    -
+                                </t>
+                                  <br />
+                                Nombre del Doctor: <br />
+                                  <t t-if="o.name_doctor">
+                                    <span t-esc="o.name_doctor" />
+                                </t>
+                                  <t
+                                    t-if="not o.name_doctor">
+                                    -
+                                </t>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="content" style="font-size:.85em;">
+                        <thead>
+                            <tr>
+                                <td>
+                                    <strong>N°</strong>
+                                </td>
+                                <td>
+                                    <strong>Código</strong>
+                                </td>
+                                <td>
+                                    <strong>Descripción</strong>
+                                </td>
+                                <td>
+                                    <strong>Cantidad</strong>
+                                </td>
+                                <td>
+                                    <strong>Categoría</strong>
+                                </td>
+                                <td>
+                                    <strong>Lote #</strong>
+                                </td>
+                                <td>
+                                    <strong>Expiración</strong>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="counter" t-value="1" />
+                            <t t-set="lines"
+                                t-value="o.move_line_ids_without_package.sorted(key=lambda l: -l.id, reverse=True)" />
+                            <t t-foreach="lines" t-as="line">
+                                <tr>
+                                    <td>
+                                        <span t-esc="counter" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.product_id.default_code" />
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_id.name" />
+                                    </td>
+                                    <td>
+                                        <span t-if="o.state != 'done'"
+                                            t-field="line.product_uom_qty" />
+                                        <span t-if="o.state == 'done'" t-field="line.qty_done" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.product_id.categ_id.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.lot_id.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.expiration_date.strftime('%d-%m-%Y')" />
+                                    </td>
+                                </tr>
+                                <t t-set="counter" t-value="counter + 1" />
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

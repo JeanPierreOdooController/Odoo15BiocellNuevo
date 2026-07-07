@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<data>
+		<record id="view_stock_move_line_form_inherit" model="ir.ui.view">
+				<field name="name">stock.move.line.form.inherit</field>
+				<field name="model">stock.move.line</field>
+				<field name="inherit_id" ref="stock.view_move_line_form"/>
+				<field name="arch" type="xml">
+					<xpath expr="//group//field[@name='date']" position="before">
+						<field name="move_id"/>
+					</xpath>
+				</field>
+		</record>
+		<record id="view_stock_move_form_inherit" model="ir.ui.view">
+				<field name="name">stock.move.form.inherit</field>
+				<field name="model">stock.move</field>
+				<field name="inherit_id" ref="stock.view_move_form"/>
+				<field name="arch" type="xml">
+					<xpath expr="//group//group[2]" position="inside">
+						<field name="picking_id"/>
+					</xpath>
+				</field>
+		</record>
+		<record id="view_stock_move_tree_inherit" model="ir.ui.view">
+				<field name="name">stock.move.tree.inherit</field>
+				<field name="model">stock.move</field>
+				<field name="inherit_id" ref="stock.view_move_tree"/>
+				<field name="arch" type="xml">
+					<xpath expr="//field[@name='reference']" position="after">
+						<field name="kardex_date" optional="show"/>
+						<field name="no_mostrar" optional="hdie"/>
+					</xpath>
+				</field>
+		</record>
+		<record id="view_stock_picking_search_inherit" model="ir.ui.view">
+			<field name="name">stock.picking.search.inherit</field>
+			<field name="model">stock.picking</field>
+			<field name="inherit_id" ref="stock.view_picking_internal_search"/>
+			<field name="arch" type="xml">
+				<xpath expr="//filter[@name='cancel']" position="after">
+					<separator/>
+					<filter string="Mostrar Kardex" name="no_mostrar" domain="[('no_mostrar', '=', False)]"/>
+					<filter string="No Mostrar Kardex" name="no_mostrar" domain="[('no_mostrar', '=', True)]"/>
+				</xpath>
+				<xpath expr="//filter[@name='status']" position="after">
+					<filter string="Fecha Kardex" name="kardex_date" domain="[]" context="{'group_by': 'kardex_date'}"/>
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+</odoo>

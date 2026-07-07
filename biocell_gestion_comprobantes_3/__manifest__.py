@@ -1,0 +1,21 @@
+# -*- encoding: utf-8 -*-
+{
+	'name': 'Hr Voucher IT',
+	'category': 'hr',
+	'author': 'ITGRUPO-HR',
+	'depends': ['biocell_extensiones_contables_2'],
+	'version': '1.0',
+	'description':"""
+	Modulo para Boletas de pago en Nominas
+	""",
+	'auto_install': False,
+	'demo': [],
+	'data':	[
+		# 'data/template_boleta_email.xml',
+		'views/hr_main_parameter.xml',
+		'views/hr_payslip.xml',
+		'views/hr_payslip_run.xml'
+	],
+	'installable': True,
+	'license': 'LGPL-3',
+}

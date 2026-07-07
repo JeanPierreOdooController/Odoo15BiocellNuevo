@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="sale_order_view_form_inherit_add_clinical_delivery_id" model="ir.ui.view">
+        <field name="name">sale.order.view.form.inherit.add.clinical.delivery.id</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='clinic_information']/group[2]/group[2]" position="inside">
+                <field name="clinical_delivery_id"  options="{'no_create': True, 'no_create_edit':True}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

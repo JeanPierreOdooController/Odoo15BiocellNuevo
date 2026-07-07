@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Heredar la vista de formulario de sale.order para agregar el botón AGENDAR -->
+        <record id="sale_order_form_agendar_button" model="ir.ui.view">
+            <field name="name">sale.order.form.agendar.button</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- Agregar el botón AGENDAR antes del botón "Enviar por Email" -->
+                <xpath expr="//button[@name='action_quotation_send']" position="before">
+                    <button name="action_agendar"
+                            string="AGENDAR"
+                            type="object"
+                            class="btn btn-primary"
+                            attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('state_agendamiento', 'in', ['SIN GESTION', 'EN GESTION', 'PREPARADO', 'PROCESADO'])]}"/>
+                    <button name="action_actualizar_agenda"
+                            string="ACTUALIZAR AGENDA"
+                            type="object"
+                            class="btn btn-primary"
+                            attrs="{'invisible': [('state_agendamiento', '=', False)]}"/>
+                </xpath>
+                
+                <!-- Reemplazar el campo patient_vat (Paciente DNI/RUC) por el campo Segmento -->
+                <xpath expr="//field[@name='patient_vat']" position="replace">
+                    <field name="segmento"/>
+                </xpath>
+                
+                <!-- Reemplazar el campo sugery_order (Orden de Cirugía) por el campo Tipo de cirugía -->
+                <xpath expr="//field[@name='sugery_order']" position="replace">
+                    <field name="tipo_cirugia"/>
+                </xpath>
+
+                <!-- Confirmar cambios de Fecha/Hora Cirugía antes de aplicarlos en el formulario -->
+                <xpath expr="//field[@name='sugery_date']" position="attributes">
+                    <attribute name="widget">confirm_sugery_date</attribute>
+                </xpath>
+
+                <!-- Agregar los campos Articulación después del campo Procedimiento Clínico -->
+                <xpath expr="//field[@name='procedure_clinic']" position="after">
+                    <field name="articulacion_medicina_deportiva" attrs="{'invisible': [('segmento', '!=', 'medicina_deportiva')]}"/>
+                    <field name="articulacion_cmf" attrs="{'invisible': [('segmento', '!=', 'cmf')]}"/>
+                </xpath>
+                
+                <!-- Ocultar el campo picking_policy (Política de entrega) -->
+                <xpath expr="//field[@name='picking_policy']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                
+                <!-- Agregar el campo Kardex e instrumental después del campo Política de Entrega -->
+                <xpath expr="//field[@name='clinical_delivery_id']" position="after">
+                    <field name="kardex_instrumental" 
+                           widget="text" 
+                           options="{'resizable': true}"
+                           style="max-width: 500px; word-wrap: break-word; white-space: pre-wrap;"/>
+                    <field name="state_agendamiento" invisible="1"/>
+                </xpath>
+                
+                <!-- Agregar botón de sincronización forzada para órdenes atrapadas -->
+                <xpath expr="//button[@name='action_agendar']" position="after">
+                    <button name="action_forzar_sincronizacion"
+                            string="Sincronizar estado"
+                            type="object"
+                            class="btn btn-warning"
+                            groups="base.group_no_one"
+                            attrs="{'invisible': ['|', ('state', '=', 'draft'), ('state_agendamiento', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

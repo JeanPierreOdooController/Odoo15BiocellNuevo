@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="assets_backend" inherit_id="web.assets_backend">
+		<xpath expr="." position="inside">
+			<script src="/biocell_gestion_sedes_empresa/static/src/js/switch_biocell_gestion_sedes_empresa_menu.js" type="text/javascript"/>
+		</xpath>
+	</template>
+</odoo>

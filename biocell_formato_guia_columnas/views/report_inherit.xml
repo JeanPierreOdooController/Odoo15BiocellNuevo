@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <template id="biocell_formato_guia_columnas" name="biocell_formato_guia_columnas" inherit_id="biocell_pe_facturacion_electronica_despatch.report_despatch_document">
+        <!-- Cambio en el orden de la columnas -->
+        <!-- Eliminar la columna Cantidad -->
+        <xpath expr="//table[@name='despatch_line_table']/thead/tr/th[4]" position="replace">
+        </xpath>
+        <xpath expr="//t[@name='despatch_line']/td[4]" position="replace">
+        </xpath>
+        <!-- Nuevo Orden -->
+        <xpath expr="//table[@name='despatch_line_table']/thead/tr/th[7]" position="after">
+          <th style="border: 1px solid black;" name="th_quantity" class="text-right"><span>Cantidad</span></th>
+          <th style="border: 1px solid black;" class="text-center"><span>UdM</span></th>
+        </xpath>
+        <xpath expr="//t[@name='despatch_line']/td[7]" position="after">
+          <!-- Columna cambiada de orden y nueva agregada -->
+          <td style="border: 1px solid black;" class="text-right">
+            <span t-field="line.bio_cantidad"/>
+          </td>
+          <td style="border: 1px solid black;" class="text-right">
+            <span t-esc="move.product_id.uom_id.name" t-if="move.product_id.uom_id"/>
+          </td>
+        </xpath>
+        
+        <xpath expr="//t[@t-value='cantidad + line.quantity']" position="replace">
+        </xpath>
+      
+        <xpath expr="//tbody[@class='despatch_tbody']/t[1]" position="after">
+          <t t-set="product_list" t-value="[]"/>
+          <t t-set="unique_list" t-value="[]"/>
+
+          <t t-foreach="lines" t-as="line">
+            <t t-if="line.product_id not in product_list">
+              <t t-esc="product_list.append(line.product_id)"/>
+              <t t-esc="unique_list.append(line)"/>
+            </t>
+          </t>
+          <t t-set="lines" t-value="unique_list"/>
+        </xpath>
+        
+        <xpath expr="//t[@t-foreach='lines']/tr[1]" position="before">
+          <t t-set="move_info" t-value="o.get_move_stock_by_product_report(line.product_id)"/>
+        </xpath>
+          
+        <xpath expr="//t[@name='despatch_line']/td[2]" position="replace">
+          <td style="border: 1px solid black;">
+              <t t-esc="line.product_id.default_code" t-if="line.product_id"/>
+          </td>
+        </xpath>
+        
+        <xpath expr="//t[@name='despatch_line']/td[3]" position="replace">
+          <td style="border: 1px solid black;" name="despatch_line_name">
+              <span t-field="line.product_id.name" t-options="{'widget': 'text'}"/>
+          </td>
+        </xpath>
+        
+        <xpath expr="//t[@name='despatch_line']/td[4]" position="replace">
+          <td style="border: 1px solid black;" class="text-center">
+              <span t-field="line.product_id.categ_id.name"/>
+          </td>
+        </xpath>
+        
+        <xpath expr="//t[@name='despatch_line']/td[5]" position="replace">
+          <td style="border: 1px solid black;" class="text-center">
+              <t t-foreach="move_info" t-as="move">
+                  <t t-esc="move['lot']"/>
+                  <br/>
+              </t>
+          </td>
+        </xpath>
+        
+        <xpath expr="//t[@name='despatch_line']/td[6]" position="replace">
+          <td style="border: 1px solid black;" class="text-center">
+            <t t-foreach="move_info" t-as="move">
+                  <t t-esc="move['expiration'].strftime('%d/%m/%Y')"/><br/>
+              </t>
+          </td>
+        </xpath>
+        
+        <xpath expr="//t[@name='despatch_line']/td[7]" position="replace">
+          <td style="border: 1px solid black;" class="text-right">
+            <t t-foreach="move_info" t-as="move">
+                  <t t-esc="move['qty']"/>
+                  <br/>
+                  <t t-set="cantidad" t-value="cantidad + move['qty']"/>
+              </t>
+          </td>
+        </xpath>
+        
+        <xpath expr="//t[@name='despatch_line']/td[8]" position="replace">
+          <td style="border: 1px solid black;" class="text-right">
+              <span t-esc="line.uom_id.name" t-if="line.uom_id"/>
+          </td>
+        </xpath>
+        
+        <xpath expr="//t[@name='despatch_line']/td[9]" position="replace">
+          <td style="border: 1px solid black; display:none;" class="text-right o_weight_total">
+              <span class="text-nowrap" t-field="line.weight"/>
+          </td>
+        </xpath>
+        
+        <xpath expr="//t[@name='despatch_line']/td[10]" position="replace">
+          <td style="border: 1px solid black; " t-if="o.bio_valorizar"><span t-field="line.bio_pu"/></td>
+        </xpath>
+        
+        <xpath expr="//t[@name='despatch_line']/td[11]" position="replace">
+          <td style="border: 1px solid black; " t-if="o.bio_valorizar"><span t-field="line.bio_total"/></td>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_massive_payment_detractions_wizard_group_user,massive.payment.detractions.wizard.group.user,biocell_cancelacion_masiva_detracciones.model_massive_payment_detractions_wizard,biocell_nucleo_contable_operativo_2.group_account_tables_user,1,1,1,1

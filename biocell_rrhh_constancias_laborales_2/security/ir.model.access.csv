@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_biocell_rrhh_impuesto_quinta_wizard_root,biocell_rrhh_impuesto_quinta_wizard_root,model_biocell_rrhh_impuesto_quinta_wizard,biocell_rrhh_impuesto_quinta.group_biocell_rrhh_impuesto_quinta_root,1,1,1,0

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_account_main_parameter_form_inherit_kardex_costsale" model="ir.ui.view">
+		<field name="name">account.main.parameter.form.inherit.costsale</field>
+		<field name="model">account.main.parameter</field>
+		<field name="inherit_id" ref="biocell_kardex_contabilizacion_existencias.view_account_main_parameter_form_inherit_kardex"/>
+		<field name="arch" type="xml">
+			<!--xpath expr="//page[@name='kardex']" position="inside">
+				<group string="Ajuste de Costo de Ventas">
+					<group>
+						<field name="location_ids_csa_adjustm" widget="many2many_tags" string="Ubicación Origen"/>
+						<field name="location_dest_ids_csa_adjustm" widget="many2many_tags" string="Ubicación Destino"/>
+						<field name="operation_type_ids_csa_adjustm" widget="many2many_tags" string="Tipo de Operación"/>
+					</group>
+					<group>
+						<field name="account_cost_sale_id"/>
+					</group>
+				</group>
+			</xpath-->
+			<field name="operation_type_ids_csa" position="after">
+				<field name="cs_date_by_invoice_date"/>
+			</field>
+		</field>
+	</record>
+</odoo>

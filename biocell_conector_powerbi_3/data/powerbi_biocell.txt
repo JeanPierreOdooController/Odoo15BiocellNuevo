@@ -1,0 +1,65 @@
+from pandas import DataFrame, concat
+from xmlrpc import client as xmlrpclib
+import ssl
+# Parameters
+url = "https://biocells-odoo15.odoo.com"
+db = 'biocells-odoo15-main-10172843'
+model = 'sale.order.powerbi'
+username = ''
+password = ''
+# Odoo Connection
+context = ssl._create_unverified_context()
+common = xmlrpclib.ServerProxy('{}/xmlrpc/2/common'.format(url), context=context)
+version = common.version()
+print('details...', version)
+uid = common.authenticate(db, username, password, {})
+print('UID', uid)
+models = xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(url), context=context)
+fields_dict={
+    'sale_order':'Pedido de Venta',
+    'product_code':'Código Producto',
+    'create_datetime':'Fecha y Hora de Creación',
+    'confirmation_datetime':'Fecha y Hora de Confirmación de SO',
+    'quotation_qty':'Cantidad Cotización',
+    'sent_qty':'Cantidad Enviada',
+    'consumed_qty':'Cantidad Consumida',
+    'partner_id':'Nombre Cliente',
+    'saleperson_id':'Asesor',
+    'created_by_id':'Creado Por',
+    'plantilla_presupuesto_id':'Plantilla de Presupuesto(Venta)',
+    'plantilla_kardex_id':'Plantilla de Kardex(Venta)',
+    'plantilla_presupuesto_line_id':'Plantilla de Presupuesto(origen)',
+    'plantilla_kardex_line_id':'Plantilla de Kardex(origen)',
+    'medic_center':'Centro Médico',
+    'name_doctor':'Nombre del Doctor',
+    'sugery_date':'Fecha/Hora Cirugía',
+    'procedure_clinic_id':'Procedimiento',
+    'request_date':'Fecha de Solicitud de Cotización',
+    'schedulling_request_date':'Fecha de Solicitud de Agendamiento'
+}
+limit = 2000
+offset = 0
+data = DataFrame()
+
+# Data query
+while True:
+    raw_data = models.execute_kw(
+        db, 
+        uid, 
+        password, 
+        model, 
+        'search_read', 
+        [[]],
+        {
+            'fields': list(fields_dict.keys()),
+            'limit': limit,
+            'offset': offset
+        }
+    )
+    if not raw_data:
+        break
+    batch_data = DataFrame(raw_data)
+    data = concat([data, batch_data], ignore_index=True)
+    batch_data = None
+    offset += limit
+data = data.rename(columns=fields_dict)

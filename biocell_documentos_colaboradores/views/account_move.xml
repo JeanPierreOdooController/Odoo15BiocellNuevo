@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_employeeview_move_form_inherit" model="ir.ui.view">
+            <field name="name">biocell_extensiones_contables.employee.view.form.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="biocell_extensiones_contables.view_move_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@id='aml_tab']/field[@name='line_ids']/tree/field[@name='partner_id']" position="after">
+                    <field name="employee_id" optional="hide"/>                  
+                </xpath>
+                <xpath expr="//notebook/page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='partner_id']" position="after">
+                    <field name="employee_id" optional="hide" column_invisible="0"/>                  
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

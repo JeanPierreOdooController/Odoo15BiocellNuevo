@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="block_products_and_lots" model="res.groups">
+        <field name="name">Inventario: Bloquear Productos y Lotes</field>
+        <field name="comment">Usuarios que pueden bloquear productos y lotes para las transferencias.</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="biocell_kardex_contabilizacion_existencias.costs_sales_analysis_wizard_action" model="ir.actions.act_window">
+			<field name="name">Costo de Venta</field>
+		</record>
+
+		<menuitem id="menu_action_costs_sales_analysis_unit" 
+				  parent="biocell_kardex_movimientos_fisicos.kardex_main_menu"
+				  name="Unidades Especificas"
+				  sequence="55"/>
+
+		<menuitem action="biocell_kardex_contabilizacion_existencias.costs_sales_analysis_wizard_action" 
+				  id="biocell_kardex_contabilizacion_existencias.menu_action_costs_sales_analysis_wizard" 
+				  parent="biocell_kardex_contabilizacion_existencias_sale.menu_action_costs_sales_analysis_unit"
+				  sequence="3"/>
+	</data>
+</odoo>

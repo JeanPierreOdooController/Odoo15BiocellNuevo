@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_costs_sales_analysis_adjustm_wizard_form">
+			<field name="name">costs.sales.analysis.adjustm.wizard.form</field>
+			<field name="model">costs.sales.analysis.adjustm.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Analisis de Ajuste de Costo de Venta">
+					<group>
+						<group>
+							<field name="company_id"/>
+							<field name="period"/>
+						</group>
+						<group>
+							<field name="type_show"/>
+						</group>
+					</group>
+					<footer>	
+						<button string="Mostrar" name="get_report" type="object" class="oe_highlight"/>
+						<button string="Generar Asiento" name="make_invoice" type="object" class="oe_highlight"/>
+						or
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="costs_sales_analysis_adjustm_wizard_action" model="ir.actions.act_window">
+			<field name="name">Ajuste de Costo de Venta</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">costs.sales.analysis.adjustm.wizard</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<!--menuitem action="costs_sales_analysis_adjustm_wizard_action" 
+				  id="menu_costs_sales_analysis_adjustm_wizard_action" 
+				  parent="biocell_kardex_contabilizacion_existencias_sale.menu_action_costs_sales_analysis_unit"
+				  sequence="6"/-->
+
+	</data>
+</odoo>

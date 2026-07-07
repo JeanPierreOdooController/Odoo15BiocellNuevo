@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="biocell_conector_powerbi_3_view_tree" model="ir.ui.view">
+        <field name="name">sale.order.powerbi.view.tree</field>
+        <field name="model">sale.order.powerbi</field>
+        <field name="arch" type="xml">
+            <tree create="0" edit="0" delete="0">
+                <field name="sale_order" />
+                <field name="product_code" />
+                <field name="create_datetime" />
+                <field name="confirmation_datetime" />
+                <field name="quotation_qty" />
+                <field name="sent_qty" />
+                <field name="consumed_qty" />
+                <field name="partner_id" />
+                <field name="saleperson_id" />
+                <field name="created_by_id" />
+
+                <field name="plantilla_presupuesto_id" />
+                <field name="plantilla_kardex_id" />
+                <field name="plantilla_presupuesto_line_id" />
+                <field name="plantilla_kardex_line_id" />
+                <field name="medic_center" />
+                <field name="name_doctor" />
+                <field name="sugery_date" />
+                <field name="procedure_clinic_id" />
+                <field name="request_date" />
+                <field name="schedulling_request_date" />
+            </tree>
+        </field>
+    </record>
+    <record id="biocell_conector_powerbi_3_action" model="ir.actions.act_window">
+        <field name="name">PowerBi Ventas</field>
+        <field name="res_model">sale.order.powerbi</field>
+        <field name="view_mode">tree</field>
+    </record>
+</odoo>

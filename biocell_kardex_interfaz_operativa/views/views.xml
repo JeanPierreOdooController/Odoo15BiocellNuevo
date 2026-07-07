@@ -1,0 +1,33 @@
+<odoo>
+<data>
+	<record id="view_stock_picking_form_inherit_button_style_1" model="ir.ui.view">
+			<field name="name">stock.picking.form.inherit.button.style.1</field>
+			<field name="model">stock.picking</field>
+			<field name="inherit_id" ref="biocell_kardex_movimientos_fisicos.view_picking_form"/>
+			<field name="arch" type="xml">
+				<button name="actualizar_kardex_date_b" position="attributes">
+					<attribute name="string"></attribute>
+					<attribute name="icon">fa-calendar</attribute>
+					<attribute name="title">Editar fecha kardex</attribute>
+				</button>
+				<button name="change_mostrar_b" position="attributes">
+					<attribute name="string"></attribute>
+					<attribute name="icon">fa-chain-broken</attribute>
+					<attribute name="title">Editar mostrar kardex</attribute>
+				</button>
+			</field>
+	</record>
+	<record id="view_stock_picking_form_inherit_button_style_2" model="ir.ui.view">
+			<field name="name">stock.picking.form.inherit.button.style.2</field>
+			<field name="model">stock.picking</field>
+			<field name="inherit_id" ref="biocell_kardex_costeo_existencias.view_picking_form"/>
+			<field name="arch" type="xml">
+				<button name="actualizar_priceunit" position="attributes">
+					<attribute name="string"></attribute>
+					<attribute name="icon">fa-edit</attribute>
+					<attribute name="title">Editar precio unitario</attribute>
+				</button>
+			</field>
+	</record>
+</data>
+</odoo>

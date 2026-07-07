@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="biocell_flujo_atencion_clinica_view_tree" model="ir.ui.view">
+        <field name="name">clinical.delivery.policy.view.tree</field>
+        <field name="model">clinical.delivery.policy</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+    <record id="biocell_flujo_atencion_clinica_view_form" model="ir.ui.view">
+        <field name="name">clinical.delivery.policy.view.form</field>
+        <field name="model">clinical.delivery.policy</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />      
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="biocell_flujo_atencion_clinica_action" model="ir.actions.act_window">
+        <field name="name">Politicas de Entrega</field>
+        <field name="res_model">clinical.delivery.policy</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="biocell_flujo_atencion_clinica_menu"
+        name="Politicas de Entrega Clinicas"
+        action="biocell_flujo_atencion_clinica_action"
+        parent="sale.menu_sale_config"
+        sequence="400"/>
+</odoo>

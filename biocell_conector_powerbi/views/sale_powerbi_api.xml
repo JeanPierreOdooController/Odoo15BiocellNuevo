@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="sale_biocell_conector_powerbi_view_tree" model="ir.ui.view">
+        <field name="name">sale.powerbi.api.view.tree</field>
+        <field name="model">sale.powerbi.api</field>
+        <field name="arch" type="xml">
+            <tree create="0" delete="0" edit="0">
+                <field name="sale_no" />
+                <field name="establishment" />
+                <field name="quoted_amount" />
+                <field name="client_name" />
+                <field name="doctor_name" />
+                <field name="medical_center_name" />
+                <field name="surgery_date" />
+                <field name="clinical_procedure" />
+                <field name="state" />
+                <field name="invoice_ref" />
+                <field name="invoice_amount" />
+                <field name="observations" />
+                <field name="saleman_assigned" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_biocell_conector_powerbi_action" model="ir.actions.act_window">
+        <field name="name">PowerBI CRM</field>
+        <field name="res_model">sale.powerbi.api</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="sale_biocell_conector_powerbi_action_server" model="ir.actions.server">
+        <field name="name">PowerBi CRM</field>
+        <field name="model_id" ref="model_sale_biocell_conector_powerbi"/>
+        <field name="binding_model_id" ref="model_sale_biocell_conector_powerbi"/>
+        <field name="state">code</field>
+        <field name="code">action=model.get_report()</field>
+    </record>
+
+    <menuitem
+        id="sale_powerbi_acpi_menu"
+        name="API PowerBI CRM"
+        action="sale_biocell_conector_powerbi_action_server"
+        parent="sale.menu_sale_report"
+        sequence="21"/>
+</odoo>

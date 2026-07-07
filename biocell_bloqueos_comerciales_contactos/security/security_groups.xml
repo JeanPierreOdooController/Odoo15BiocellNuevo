@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="group_commercial_restricted" model="res.groups">
+            <field name="name">Perfil Comercial - Acceso Restringido</field>
+            <field name="comment">Usuarios que no pueden archivar/desarchivar biocell_directorio_contactos</field>
+        </record>
+    </data>
+</odoo>

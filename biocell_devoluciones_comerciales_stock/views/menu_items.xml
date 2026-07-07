@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="group_aprobadores_hc" model="res.groups">
+        <field name="name">Aprobadores de HC en Ventas</field>
+    </record>
+
+
+	<record model="ir.ui.view" id="view_move_returnbio_form_onlyread">
+		<field name="name">stock.move.form</field>
+		<field name="model">stock.move</field>
+		<field name="arch" type="xml">
+			<form string="Consumo">
+					<group>
+						<group>
+							<field name="name" readonly="1"/>
+							<field name="product_id" readonly="1"/>
+						</group>
+						<group>
+							<field name="company_id" readonly="1"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Consumo">
+							<field name="move_line_ids">
+								<tree editable="bottom" create="0" delete="0">
+									<field name="product_id" readonly="1" string="Producto"/>
+									<field name="lot_id" readonly="1" string="Serie/Lote"/>
+									<field name="qty_done" readonly="1" string="Cantidad Entregada"/>
+									<field name="qty_consumida" readonly="1" string="Cantidad Consumida"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+			</form>
+		</field>
+	</record>
+
+
+	<record model="ir.ui.view" id="view_move_returnbio_form">
+		<field name="name">stock.move.form</field>
+		<field name="model">stock.move</field>
+		<field name="arch" type="xml">
+			<form string="Consumo">
+					<group>
+						<group>
+							<field name="name" readonly="1"/>
+							<field name="product_id" readonly="1"/>
+						</group>
+						<group>
+							<field name="company_id" readonly="1"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Consumo">
+							<field name="move_line_ids">
+								<tree editable="bottom" create="0" delete="0">
+									<field name="product_id" readonly="1" string="Producto"/>
+									<field name="lot_id" readonly="1" string="Serie/Lote"/>
+									<field name="qty_done" readonly="1" string="Cantidad Entregada"/>
+									<field name="qty_consumida" string="Cantidad Consumida"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+			</form>
+		</field>
+	</record>
+
+
+
+	<record model="ir.ui.view" id="view_facturacion_venta_pendiente_tree">
+		<field name="name">facturacion.venta.pendiente.tree</field>
+		<field name="model">facturacion.venta.pendiente</field>
+		<field name="arch" type="xml">
+			<tree string="Pendiente a Facturar" editable="bottom" create="0" delete="0">
+				<field name="pedido" readonly="1" />
+				<field name="partner" readonly="1" />
+				<field name="date_order" readonly="1" />
+				<field name="currency_id" readonly="1" />
+				<field name="producto" readonly="1" />
+				<field name="entregado" readonly="1" />
+				<field name="pu" readonly="1" />
+				<field name="subtotal" readonly="1" />
+			</tree>			
+		</field>
+	</record>
+
+		<record id="facturacion_venta_pendiente_action" model="ir.actions.act_window">
+			<field name="name">Pendiente a Facturar</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">facturacion.venta.pendiente</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+
+		<menuitem action="facturacion_venta_pendiente_action" 
+				id="menu_facturacion_venta_pendiente" 
+				parent="sale.menu_sale_report"/>
+
+	<record id="view_order_form" model="ir.ui.view">
+		<field name="name">sale.order.form</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form"/>
+		<field name="arch" type="xml">
+			<data>
+				<field name="payment_term_id" position="after">
+					<field name="es_consignacion" invisible="1" />
+					<div attrs="{'invisible':[('es_consignacion','=',False)]}">
+						<span style="color:red">El cliente tiene Consignación</span>
+						<field name="almacen_consignacion" readonly="1" />
+					</div>					
+				</field>
+
+				<xpath expr="//notebook" position="inside">			
+					<field name="almacen_consignacion_stock" invisible="1" />
+					<page string="Hoja de Consumo" attrs="{'invisible':['|',('almacen_consignacion_stock','=',True),('state','not in',('sale','done'))]}">
+						<group>
+							<group string="Aprobación de HC">
+								<field name="fecha_confirmación" readonly="1"/>
+								<field name="user_confirmación" readonly="1"/>
+								<button string="Aprobar" name="aprobarhc" type="object" class="oe_highlight" attrs="{'invisible':[('user_confirmación','!=',False)]}"/> 
+								<button string="Desaprobar" name="desaprobarhc" type="object" class="oe_highlight" attrs="{'invisible':[('user_confirmación','=',False)]}"/> 
+							</group>
+							<group string="Retorno de no Consumido">
+								<field name="generado" readonly="1"/>
+								<button string="Generar Retorno" help="Esta ud. seguro de generar el Retorno de los productos no consumidos?" name="generate_dev" type="object" class="oe_highlight" attrs="{'invisible':[('generado','=',True)]}"/> 								
+							</group>
+							<!-- <group string="Guia de Remisión">
+								<field name="guia_remision_id" readonly="1"/>
+								<button string="Abrir Guia Remisión" name="crear_gr" type="object" class="oe_highlight" attrs="{'invisible':[('generado','!=',True)]}"/> 	
+							</group> -->
+						</group>
+						<field name="move_ids_return">
+							<tree editable="bottom" create="0" delete="0">
+								<field name="picking_id" readonly="1"/>
+								<field name="product_id" readonly="1"/>
+								<field name="product_uom_qty" readonly="1" string="Entregado"/>
+								<field name="consumido_qty" readonly="1" string="consumido"/>
+								<button string="Consumir" name="open_wizard_lineas" type="object" class="oe_highlight"/> 
+							</tree>
+						</field>
+					</page>
+				</xpath>
+			</data>
+		</field>
+	</record>
+
+
+		<record id="view_partner_form_inherit" model="ir.ui.view">
+			<field name="name">res.partner.form.inherit</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="account.view_partner_property_form"/>
+			<field name="arch" type="xml">
+					<page name="accounting" position="after">
+						<page name="consignacion" string="Consignación">
+							<group string="Datos">
+								<group>
+									<field name="precio_guia"/>
+									<!--
+									<field name="es_consignacion"/>
+									<field name="almacen_consignacion" attrs="{'invisible':[('es_consignacion','=',False)] ,'required':[('es_consignacion','=',True)]}" />									 -->
+								</group>
+								<group>
+								</group>
+							</group>
+						</page>
+					</page>
+			</field>
+		</record>
+
+
+
+		<record id="view_move_form_expiry" model="ir.ui.view">
+			<field name="name">stock.production.lot.form.inherit</field>
+			<field name="model">stock.production.lot</field>
+			<field name="inherit_id" ref="product_expiry.view_move_form_expiry"/>
+			<field name="arch" type="xml">
+				<field name="removal_date" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</field>
+				<field name="use_date" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</field>
+				<field name="alert_date" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</field>
+				    
+			</field>
+		</record>
+
+
+
+
+	    <record id="view_product_form_expiry" model="ir.ui.view">
+            <field name="name">product.template.inherit.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product_expiry.view_product_form_expiry" />
+            <field name="arch" type="xml">
+		    <xpath expr="//group[@name='expiry_and_lots']" position="attributes">
+			    <attribute name="invisible">1</attribute>
+		    </xpath>
+            </field>
+        </record>
+
+	
+	    <record id="view_move_form" model="ir.ui.view">
+            <field name="name">account.move.inherit.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form" />
+            <field name="arch" type="xml">
+		    
+				<xpath expr="//notebook/page[@id='other_tab']/group[@id='other_tab_group']" position="inside">
+					<group string="BioCell" name="itgrupo">
+					  <field name="paciente_rel"/>					
+					  <field name="doctor_rel"/>	
+
+					<field name="paciente_personalizado"/>
+					<field name="doctor_personalizado"/>
+					</group>
+				</xpath>
+
+		    
+				<xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="after">
+					<field name="categoria" readonly="1" />
+				</xpath>
+
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+	
+	    <record id="view_location_form" model="ir.ui.view">
+            <field name="name">stock.location.inherit.form</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_form" />
+            <field name="arch" type="xml">
+		    
+	<xpath expr="//field[@name='return_location']" position="after">
+				      <field name="es_consignacion"/>
+            </xpath>
+
+            </field>
+        </record>
+
+	
+	
+
+</odoo>

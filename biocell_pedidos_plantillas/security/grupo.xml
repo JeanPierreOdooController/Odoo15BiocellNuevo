@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="group_sale_order_category" model="res.groups">
+            <field name="name">Categorias de ventas</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+            <field name="comment">Permite que puedas agregar, editar y eliminar los campos que se encuentren internamente de la tabla de Categorias de ventas.</field>
+        </record>
+        <record id="group_sale_category" model="res.groups">
+            <field name="name">Tipo de Categorias de ventas</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+            <field name="comment">Permite que puedas agregar, editar y eliminar los campos que se encuentren internamente de la tabla de Tipo de Categorias de ventas.</field>
+        </record>
+
+
+    </data>
+</odoo>

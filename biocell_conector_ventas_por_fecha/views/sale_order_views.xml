@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Agregar fechas de agendamiento como columnas opcionales en el tree de cotizaciones -->
+        <record id="view_quotation_tree_fecha_agendamiento" model="ir.ui.view">
+            <field name="name">sale.order.tree.fecha.agendamiento</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="inside">
+                    <field name="fecha_agendamiento" optional="hide"/>
+                    <field name="fecha_actualizacion_agendamiento" optional="hide"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Agregar fechas de agendamiento como columnas opcionales en el tree de pedidos -->
+        <record id="view_order_tree_fecha_agendamiento" model="ir.ui.view">
+            <field name="name">sale.order.tree.order.fecha.agendamiento</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="inside">
+                    <field name="fecha_agendamiento" optional="hide"/>
+                    <field name="fecha_actualizacion_agendamiento" optional="hide"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Mostrar las fechas en el formulario de la SO (solo lectura) -->
+        <record id="view_order_form_fecha_agendamiento" model="ir.ui.view">
+            <field name="name">sale.order.form.fecha.agendamiento</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="biocell_conector_ventas.sale_order_form_agendar_button"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='kardex_instrumental']" position="after">
+                    <field name="fecha_agendamiento" readonly="1"/>
+                    <field name="fecha_actualizacion_agendamiento" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

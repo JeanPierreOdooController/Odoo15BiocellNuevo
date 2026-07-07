@@ -1,0 +1,222 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * biocell_edicion_masiva_registros
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-22 00:55+0000\n"
+"PO-Revision-Date: 2017-02-22 00:55+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Estonian (https://www.transifex.com/oca/teams/23907/et/)\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: biocell_edicion_masiva_registros
+#: model_terms:ir.ui.view,arch_db:biocell_edicion_masiva_registros.view_biocell_edicion_masiva_registros_form
+msgid ""
+"<b>WARNING</b>: Take into account that adding a field with a domain, and not "
+"including the fields of such domain in this operation definition, will lead "
+"to an error when trying to perform it. Make sure you include them."
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__action_name
+msgid "Action Name"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: code:addons/biocell_edicion_masiva_registros/wizard/biocell_edicion_masiva_registros_wizard.py:0
+#, python-format
+msgid "Add"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,help:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__widget_option
+msgid ""
+"Add widget text that will be used to display the field in the wizard. "
+"Example :\n"
+"'many2many_tags', 'selection'"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__groups_id
+msgid "Allowed Groups"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,help:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__apply_domain
+msgid "Apply default domain related to field"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__apply_domain
+msgid "Apply domain"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__apply_domain_in_lines
+msgid "Apply domain in lines"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__create_uid
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__create_uid
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_wizard__create_uid
+msgid "Created by"
+msgstr "Loonud"
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__create_date
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__create_date
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_wizard__create_date
+msgid "Created on"
+msgstr "Loodud"
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__display_name
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__display_name
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_wizard__display_name
+msgid "Display Name"
+msgstr "Näidatav nimi"
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__domain
+msgid "Domain"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__field_id
+msgid "Field"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__id
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__id
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,help:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__message
+msgid "If set, this message will be displayed in the wizard."
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros____last_update
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line____last_update
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_wizard____last_update
+msgid "Last Modified on"
+msgstr "Viimati muudetud"
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__write_uid
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__write_uid
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Viimati uuendatud"
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__write_date
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__write_date
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_wizard__write_date
+msgid "Last Updated on"
+msgstr "Viimati uuendatud"
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__line_ids
+msgid "Line"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.actions.act_window,name:biocell_edicion_masiva_registros.action_biocell_edicion_masiva_registros
+#: model:ir.model,name:biocell_edicion_masiva_registros.model_biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__biocell_edicion_masiva_registros_id
+#: model:ir.ui.menu,name:biocell_edicion_masiva_registros.menu_biocell_edicion_masiva_registros
+msgid "Mass Editing"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model,name:biocell_edicion_masiva_registros.model_biocell_edicion_masiva_registros_line
+msgid "Mass Editing Line"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__message
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_wizard__message
+msgid "Message"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__model_id
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__model_id
+msgid "Model"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__name
+msgid "Name"
+msgstr "Nimi"
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_wizard__operation_description_danger
+msgid "Operation Description Danger"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_wizard__operation_description_info
+msgid "Operation Description Info"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_wizard__operation_description_warning
+msgid "Operation Description Warning"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_wizard__remaining_item_qty
+msgid "Remaining Item Qty"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: code:addons/biocell_edicion_masiva_registros/wizard/biocell_edicion_masiva_registros_wizard.py:0
+#, python-format
+msgid "Remove"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_wizard__selected_item_qty
+msgid "Selected Item Qty"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: code:addons/biocell_edicion_masiva_registros/wizard/biocell_edicion_masiva_registros_wizard.py:0
+#, python-format
+msgid "Set"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros__ref_ir_act_window_id
+msgid "Sidebar Action"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model.fields,field_description:biocell_edicion_masiva_registros.field_biocell_edicion_masiva_registros_line__widget_option
+msgid "Widget Option"
+msgstr ""
+
+#. module: biocell_edicion_masiva_registros
+#: model:ir.model,name:biocell_edicion_masiva_registros.model_biocell_edicion_masiva_registros_wizard
+msgid "Wizard for mass edition"
+msgstr ""

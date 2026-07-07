@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="inventory_biocell_conector_powerbi_view_tree" model="ir.ui.view">
+        <field name="name">inventory.powerbi.api.view.tree</field>
+        <field name="model">inventory.powerbi.api</field>
+        <field name="arch" type="xml">
+            <tree create="0" delete="0" edit="0">
+                <field name="product_code" />
+                <field name="product_description" />
+                <field name="unit_cost" />
+                <field name="total_cost" />
+                <field name="warehouse" />
+                <field name="available_qty" />
+                <field name="total_qty" />
+                <field name="lot" />
+                <field name="create_date" />
+                <field name="expiration_date" />
+                <field name="group" />
+                <field name="subgroup" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="inventory_biocell_conector_powerbi_action" model="ir.actions.act_window">
+        <field name="name">PowerBI Inventario</field>
+        <field name="res_model">inventory.powerbi.api</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="inventory_biocell_conector_powerbi_action_server" model="ir.actions.server">
+        <field name="name">PowerBi Inventario</field>
+        <field name="model_id" ref="model_inventory_biocell_conector_powerbi"/>
+        <field name="binding_model_id" ref="model_inventory_biocell_conector_powerbi"/>
+        <field name="state">code</field>
+        <field name="code">action=model.get_report()</field>
+    </record>
+
+    <menuitem
+        id="inventory_biocell_conector_powerbi_menu"
+        name="API PowerBI Inventario"
+        action="inventory_biocell_conector_powerbi_action_server"
+        parent="sale.menu_sale_report"
+        sequence="23"/>
+</odoo>

@@ -1,0 +1,4 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_biocell_descarga_consultas_sql_all","access_biocell_descarga_consultas_sql_all","model_biocell_descarga_consultas_sql",,1,0,0,0
+"access_biocell_descarga_consultas_sql_editor","access_biocell_descarga_consultas_sql_editor","model_biocell_descarga_consultas_sql",biocell_modelo_consultas_sql.group_sql_request_manager,1,1,1,1
+"access_sql_file_wizard","access_sql_file_wizard","model_sql_file_wizard",,1,1,1,0

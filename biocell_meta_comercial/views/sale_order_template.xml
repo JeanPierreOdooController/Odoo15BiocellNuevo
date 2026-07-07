@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="action_sale_order_template_form_inherit" model="ir.ui.view">
+			<field name="name">sale.order.template.form.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale_management.sale_order_form_quote"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='sale_order_template_id']" position="after">
+					<field name="plantilla_presupuesto_id"  widget="many2many_tags"/>
+				</xpath>
+				<xpath expr="//field[@name='sale_order_template_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+			</field>
+		</record>
+		<record id="action_sale_order_payment_form_inherit" model="ir.ui.view">
+			<field name="name">sale.order.payment.form.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				
+				<xpath expr="//button[@name='update_prices']" position="replace">
+
+					<button name="update_prices" type="object"
+						string=" Actualizar Precios"
+						class="btn-link mb-1 px-0" icon="fa-refresh"
+						confirm="Esto actualizará todos los precios unitarios según la lista de precios establecida actualmente."
+						attrs="{'invisible': [ ('state', 'in', ['sale', 'done','cancel'])]}"/>
+				
+				</xpath>
+			</field>
+		</record>
+		<record id="action_sale_order_templateandtype_form_inherit" model="ir.ui.view">
+			<field name="name">sale.order.templateandtype.form.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//notebook//page[@name='order_lines']//field[@name='order_line']//tree//field[@name='product_updatable']" position="after">
+					<field name="sale_order_template_id"  invisible="1"/>
+					<field name="sale_type"  invisible="1"/>
+				</xpath>
+				<xpath expr="//notebook//page[@name='order_lines']//field[@name='order_line']" position="attributes">
+					<attribute name="context">{'biocell_parametro_venta_defecto':'sale'}</attribute>
+				</xpath>
+			</field>
+		</record>
+		<record id="action_sale_order_linea_Kardex_form_inherit" model="ir.ui.view">
+			<field name="name">sale.order.linea.kardex.form.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//notebook//page[@name='order_lines']" position="after">
+					<page string="Líneas de kardex" name="lines_kardex">
+                            <field name="order_line_stock" context="{'biocell_parametro_venta_defecto':'stock'}" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
+                                
+                                <tree string="Línea de kardex" editable="bottom">
+                                    <control>
+                                        <create name="add_product_control" string="Add a product"/>
+                                        <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                        <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                    </control>
+
+                                    <field name="sequence" widget="handle"/>
+                                    <!-- We do not display the type because we don't want the user to be bothered with that information if he has no section or note. -->
+                                    <field name="display_type" invisible="1"/>
+                                    <field name="product_uom_category_id" invisible="1"/>
+
+                                    <field name="product_updatable" invisible="1"/>
+									<field name="sale_order_template_id"  invisible="1"/>
+									<field name="sale_type"  invisible="1"/>
+                                    <field name="product_id" attrs="{                                             'readonly': [('product_updatable', '=', False)],                                             'required': [('display_type', '=', False)],                                         }" force_save="1" context="{                                             'partner_id': parent.partner_id,                                             'quantity': product_uom_qty,                                             'pricelist': parent.pricelist_id,                                             'uom':product_uom,                                             'company_id': parent.company_id,                                             'default_lst_price': price_unit,                                             'default_description_sale': name                                         }" domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" />
+                                    <field name="product_template_id" string="Product" invisible="1" attrs="{                                           'readonly': [('product_updatable', '=', False)],                                           'required': [('display_type', '=', False)],                                       }" context="{                                           'partner_id': parent.partner_id,                                           'quantity': product_uom_qty,                                           'pricelist': parent.pricelist_id,                                           'uom':product_uom,                                           'company_id': parent.company_id,                                           'default_list_price': price_unit,                                           'default_description_sale': name                                       }" domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
+                                    <field name="name" widget="section_and_note_text" optional="show"/>
+                                    <field name="analytic_tag_ids" optional="hide" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}" domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
+                                    <field name="product_uom_qty" decoration-info="(not display_type and invoice_status == 'to invoice')" decoration-bf="(not display_type and invoice_status == 'to invoice')" context="{                                             'partner_id': parent.partner_id,                                             'quantity': product_uom_qty,                                             'pricelist': parent.pricelist_id,                                             'uom': product_uom,                                             'company_id': parent.company_id                                         }"/>
+                                    <field name="qty_delivered" decoration-info="(not display_type and invoice_status == 'to invoice')" decoration-bf="(not display_type and invoice_status == 'to invoice')" string="Delivered" attrs="{                                             'column_invisible': [('parent.state', 'not in', ['sale', 'done'])],                                             'readonly': [('qty_delivered_method', '!=', 'manual')]                                         }" optional="show"/>
+                                    <field name="qty_delivered_manual" invisible="1"/>
+                                    <field name="qty_delivered_method" invisible="1"/>
+                                    <field name="qty_invoiced" decoration-info="(not display_type and invoice_status == 'to invoice')" decoration-bf="(not display_type and invoice_status == 'to invoice')" string="Invoiced" attrs="{'column_invisible': [('parent.state', 'not in', ['sale', 'done'])]}" optional="show"/>
+                                    <field name="qty_to_invoice" invisible="1"/>
+                                    <field name="product_uom_readonly" invisible="1"/>
+                                    <field name="product_uom" force_save="1" string="UoM" attrs="{                                             'readonly': [('product_uom_readonly', '=', True)],                                             'required': [('display_type', '=', False)],                                         }" context="{'company_id': parent.company_id}" groups="uom.group_uom" options="{&quot;no_open&quot;: True}" optional="show"/>
+                                    <field name="customer_lead" optional="hide" attrs="{'readonly': [('parent.state', 'not in', ['draft', 'sent', 'sale'])]}"/>
+                                    <field name="product_packaging_qty" attrs="{'invisible': ['|', ('product_id', '=', False), ('product_packaging_id', '=', False)]}" groups="product.group_stock_packaging" optional="show"/>
+                                    <field name="product_packaging_id" attrs="{'invisible': [('product_id', '=', False)]}" context="{'default_product_id': product_id, 'tree_view_ref':'product.product_packaging_tree_view', 'form_view_ref':'product.product_packaging_form_view'}" groups="product.group_stock_packaging" optional="show"/>
+                                    <field name="price_unit" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
+                                    <field name="tax_id" widget="many2many_tags" options="{'no_create': True}" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id), ('country_id', '=', parent.tax_country_id)]" context="{'active_test': True}" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}" optional="show"/>
+                                    <field name="discount" string="Disc.%" groups="product.group_discount_per_so_line" optional="show" widget="product_discount"/>
+                                    <field name="price_subtotal" widget="monetary" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                    <field name="price_total" widget="monetary" groups="account.group_show_line_subtotals_tax_included"/>
+                                    <field name="state" invisible="1"/>
+                                    <field name="invoice_status" invisible="1"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="price_tax" invisible="1"/>
+                                    <field name="company_id" invisible="1"/>
+                                </tree>
+                                <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <field name="note" class="oe-bordered-editor" nolabel="1" placeholder="Términos y condiciones..."/>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+										<button name="aplicar_descuento" type="object" string="Aplicar Descuento" attrs="{'invisible': [ ('state', 'in', ['sale', 'done','cancel'])]}" colspan="1"/>
+										<field name="descuento_masivo" attrs="{'readonly':[('state','=',('sale','done','cancel'))]}" colspan="1" />
+                                    <field name="tax_totals_json" widget="account-tax-totals-field" nolabel="1" colspan="2"/>
+                                </group>
+                                <div class="oe_clear"/>
+                            </group>
+                            </field>
+                           
+                        </page>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="action_sale_order_linea_Kardex_form_inherit" model="ir.ui.view">
+			<field name="name">sale.order.linea.kardex.form.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//notebook//page[@name='order_lines']" position="after">
+					<page string="Líneas de kardex" name="lines_kardex">
+                            <field name="order_line_stock" context="{'biocell_parametro_venta_defecto':'stock'}" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
+                                
+                                <tree string="Línea de kardex" editable="bottom">
+                                    <control>
+                                        <create name="add_product_control" string="Add a product"/>
+                                        <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                        <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                    </control>
+
+                                    <field name="sequence" widget="handle"/>
+                                    <!-- We do not display the type because we don't want the user to be bothered with that information if he has no section or note. -->
+                                    <field name="display_type" invisible="1"/>
+                                    <field name="product_uom_category_id" invisible="1"/>
+
+                                    <field name="product_updatable" invisible="1"/>
+									<field name="sale_order_template_id"  invisible="1"/>
+									<field name="sale_type"  invisible="1"/>
+                                    <field name="product_id" attrs="{                                             'readonly': [('product_updatable', '=', False)],                                             'required': [('display_type', '=', False)],                                         }" force_save="1" context="{                                             'partner_id': parent.partner_id,                                             'quantity': product_uom_qty,                                             'pricelist': parent.pricelist_id,                                             'uom':product_uom,                                             'company_id': parent.company_id,                                             'default_lst_price': price_unit,                                             'default_description_sale': name                                         }" domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" widget="product_configurator"/>
+                                    <field name="product_template_id" string="Product" invisible="1" attrs="{                                           'readonly': [('product_updatable', '=', False)],                                           'required': [('display_type', '=', False)],                                       }" context="{                                           'partner_id': parent.partner_id,                                           'quantity': product_uom_qty,                                           'pricelist': parent.pricelist_id,                                           'uom':product_uom,                                           'company_id': parent.company_id,                                           'default_list_price': price_unit,                                           'default_description_sale': name                                       }" domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" widget="product_configurator"/>
+                                    <field name="name" widget="section_and_note_text" optional="show"/>
+                                    <!-- <field name="analytic_tag_ids" optional="hide" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}" domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/> -->
+                                    <field name="product_uom_qty" decoration-info="(not display_type and invoice_status == 'to invoice')" decoration-bf="(not display_type and invoice_status == 'to invoice')" context="{                                             'partner_id': parent.partner_id,                                             'quantity': product_uom_qty,                                             'pricelist': parent.pricelist_id,                                             'uom': product_uom,                                             'company_id': parent.company_id                                         }"/>
+                                    <field name="qty_delivered" decoration-info="(not display_type and invoice_status == 'to invoice')" decoration-bf="(not display_type and invoice_status == 'to invoice')" string="Delivered" attrs="{                                             'column_invisible': [('parent.state', 'not in', ['sale', 'done'])],                                             'readonly': [('qty_delivered_method', '!=', 'manual')]                                         }" optional="show"/>
+                                    <field name="qty_delivered_manual" invisible="1"/>
+                                    <field name="qty_delivered_method" invisible="1"/>
+                                    <field name="qty_invoiced" decoration-info="(not display_type and invoice_status == 'to invoice')" decoration-bf="(not display_type and invoice_status == 'to invoice')" string="Invoiced" attrs="{'column_invisible': [('parent.state', 'not in', ['sale', 'done'])]}" optional="show"/>
+                                    <field name="qty_to_invoice" invisible="1"/>
+                                    <field name="product_uom_readonly" invisible="1"/>
+                                    <field name="product_uom" force_save="1" string="UoM" attrs="{                                             'readonly': [('product_uom_readonly', '=', True)],                                             'required': [('display_type', '=', False)],                                         }" context="{'company_id': parent.company_id}" groups="uom.group_uom" options="{&quot;no_open&quot;: True}" optional="show"/>
+                                    <field name="customer_lead" optional="hide" attrs="{'readonly': [('parent.state', 'not in', ['draft', 'sent', 'sale'])]}"/>
+                                    <field name="product_packaging_qty" attrs="{'invisible': ['|', ('product_id', '=', False), ('product_packaging_id', '=', False)]}" groups="product.group_stock_packaging" optional="show"/>
+                                    <field name="product_packaging_id" attrs="{'invisible': [('product_id', '=', False)]}" context="{'default_product_id': product_id, 'tree_view_ref':'product.product_packaging_tree_view', 'form_view_ref':'product.product_packaging_form_view'}" groups="product.group_stock_packaging" optional="show"/>
+                                    <field name="price_unit" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
+                                    <field name="tax_id" widget="many2many_tags" options="{'no_create': True}" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id), ('country_id', '=', parent.tax_country_id)]" context="{'active_test': True}" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}" optional="show"/>
+                                    <field name="discount" string="Disc.%" groups="product.group_discount_per_so_line" optional="show" widget="product_discount"/>
+                                    <field name="price_subtotal" widget="monetary" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                    <field name="price_total" widget="monetary" groups="account.group_show_line_subtotals_tax_included"/>
+                                    <field name="state" invisible="1"/>
+                                    <field name="invoice_status" invisible="1"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="price_tax" invisible="1"/>
+                                    <field name="company_id" invisible="1"/>
+                                </tree>
+                                
+                            </field>
+								<group name="note_group" col="6" class="mt-2 mt-md-0">
+									<group colspan="4">
+										<field name="note_kardex" class="oe-bordered-editor" nolabel="1" placeholder="Términos y condiciones..."/>
+									</group>
+									<group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+										<button name="aplicar_descuento" type="object" string="Aplicar Descuento" attrs="{'invisible': [ ('state', 'in', ['sale', 'done','cancel'])]}" colspan="1"/>
+										<field name="descuento_masivo"  nolabel="1" attrs="{'readonly':[('state','=',('sale','done','cancel'))]}" colspan="1" />
+										<field name="tax_totals_json_kardex" widget="account-tax-totals-field" nolabel="1" colspan="2"/>
+									</group>
+									<div class="oe_clear"/>
+								</group>
+                        </page>
+				</xpath>
+			</field>
+		</record>
+
+
+
+		<record id="action_sale_order_info_clinica_form_inherit" model="ir.ui.view">
+			<field name="name">sale.order.info.clinicaform.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale_management.sale_order_form_quote"/>
+			<field name="arch" type="xml">
+				<xpath expr="//page" position="after">
+					<page string="Información Clínica" name="clinic_information">
+						<group>
+							<group name="patient_info">
+								<field name="name_patient"/>
+								<field name="patient_vat"/>
+								<field name="clinic_history"/>
+								<field name="medic_center" domain="[('parent_id','=',partner_id) , ('type','=','medical_center')]"/>
+								<field name="name_doctor" domain="[('is_medic','=',True)]"/>
+							</group>
+							<group name="date_info">
+								<field name="sugery_date"/>
+								<field name="sugery_order"/>
+								<field name="procedure_clinic" invisible="1"/>
+								<field name="procedure_clinic_id"/>
+								<field name="instrumentalist" domain="[('is_instrumentalist','=',True)]"/>
+							</group>
+						</group>
+						<group>
+							<group name="aditional" string="ADICIONAL">
+								<field name="request_date"/>
+								<field name="schedulling_request_date"/>
+							</group>
+							<group>
+								
+							</group>
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+		<record id="action_sale_order_newfield_form_inherit" model="ir.ui.view">
+			<field name="name">sale.order.newfield.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='partner_id']" position="before">
+					
+					<field name="shop_id"/>
+								
+				</xpath>
+				<xpath expr="//group[@name='order_details']//field[@name='validity_date']" position="replace">
+					<field name="validity_term" />
+					<field name="validity_date" string="Validez"/>
+				</xpath>
+
+				<xpath expr="//group[@name='order_details']" position="inside">
+					<field name="plantilla_kardex_id"  widget="many2many_tags"/>
+					<field name="warehouse_id"/>
+				</xpath>
+				<field name="tax_totals_json" position="before">
+
+										<button name="aplicar_descuento" type="object" string="Aplicar Descuento" attrs="{'invisible': [ ('state', 'in', ['sale', 'done','cancel'])]}" colspan="1"/>
+										<field name="descuento_masivo" nolabel="1" attrs="{'readonly':[('state','=',('sale','done','cancel'))]}" colspan="1" />
+				</field>
+
+			</field>
+		</record>
+
+	</data>
+</odoo>

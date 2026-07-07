@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_kardex_stock_cost_tmp,kardex_stock_cost_tmp,model_kardex_stock_cost_tmp,,1,1,1,1
+access_make_kardex_valorado_stock,make_kardex_valorado_stock,model_make_kardex_valorado_stock,,1,1,1,1
+access_biocell_panel_saldos_financieros_4_lote_costeo,biocell_panel_saldos_financieros_4_lote_costeo,model_biocell_panel_saldos_financieros_4_lote_costeo,,1,1,1,1

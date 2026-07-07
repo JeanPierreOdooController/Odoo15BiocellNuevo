@@ -1,0 +1,6 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+
+access_querydeluxe,querydeluxe access,biocell_consultas_generales.model_querydeluxe,biocell_consultas_generales.group_biocell_consultas_generales,1,1,1,1
+access_pdforientation,pdforientation access,biocell_consultas_generales.model_pdforientation,biocell_consultas_generales.group_biocell_consultas_generales,1,1,1,1
+access_tipsqueries,tipsqueries access,biocell_consultas_generales.model_tipsqueries,biocell_consultas_generales.group_biocell_consultas_generales,1,1,1,1
+access_validation_sql_wizard_group_user,validation.sql.wizard.group.user,model_validation_sql_wizard,biocell_consultas_generales.group_biocell_consultas_generales,1,1,1,1

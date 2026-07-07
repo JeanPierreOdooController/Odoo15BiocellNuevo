@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="invoice_biocell_conector_powerbi_view_tree" model="ir.ui.view">
+        <field name="name">invoice.powerbi.api.view.tree</field>
+        <field name="model">invoice.powerbi.api</field>
+        <field name="arch" type="xml">
+            <tree create="0" delete="0" edit="0">
+                <field name="product_code" />
+                <field name="product_description" />
+                <field name="client" />
+                <field name="patient_name" />
+                <field name="doctor_name" />
+                <field name="invoice_number" />
+                <field name="sale_order" />
+                <field name="invoice_date" />
+                <field name="invoice_expiration_date" />
+                <field name="commercial_advisor" />
+                <field name="sale_qty" />
+                <field name="currency" />
+                <field name="real_price" />
+                <field name="real_currency" />
+                <field name="price" />
+                <field name="total_income" />
+                <field name="igv_amount" />
+                <field name="total_income_with_igv" />
+                <field name="document_type" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="invoice_biocell_conector_powerbi_action" model="ir.actions.act_window">
+        <field name="name">PowerBI Facturas</field>
+        <field name="res_model">invoice.powerbi.api</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="invoice_biocell_conector_powerbi_view_search" model="ir.ui.view">
+        <field name="name">invoice.powerbi.api.view.search</field>
+        <field name="model">invoice.powerbi.api</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="client" />
+                <field name="product_code" />
+                <field name="invoice_number" />
+                <field name="sale_order" />
+            </search>
+        </field>
+    </record>
+
+    <record id="invoice_biocell_conector_powerbi_action_server" model="ir.actions.server">
+        <field name="name">PowerBi Facturas</field>
+        <field name="model_id" ref="model_invoice_biocell_conector_powerbi"/>
+        <field name="binding_model_id" ref="model_invoice_biocell_conector_powerbi"/>
+        <field name="state">code</field>
+        <field name="code">action=model.get_report()</field>
+    </record>
+
+    <menuitem
+        id="invoice_biocell_conector_powerbi_menu"
+        name="API PowerBI Facturas"
+        action="invoice_biocell_conector_powerbi_action_server"
+        parent="sale.menu_sale_report"
+        sequence="22"/>
+</odoo>

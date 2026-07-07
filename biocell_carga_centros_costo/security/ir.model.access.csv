@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_importacion_actualizar_analiticos_group_user,importacion.actualizar.analiticos.group.user,model_importacion_actualizar_analiticos,biocell_nucleo_contable_operativo_2.group_account_tables_user,1,1,1,1

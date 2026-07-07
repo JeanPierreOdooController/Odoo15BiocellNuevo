@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+		<record model="ir.ui.view" id="report_package_incomplete_form">
+			<field name="name">report.package.incomplete.form</field>
+			<field name="model">report.package.incomplete</field>
+			<field name="arch" type="xml">
+				<form>
+						<group>
+							<group>
+							</group>
+							<group>
+							</group>
+						</group>
+						<footer>
+							<button string="Mostrar" name="get_report" type="object" class="oe_highlight"/>
+                            or
+							<button string="Cancel" class="oe_link" special="cancel"/>
+						</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="report_package_incomplete_action" model="ir.actions.act_window">
+			<field name="name">Reporte de Paquetes Incompletos</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">report.package.incomplete</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+
+		<menuitem action="report_package_incomplete_action" 
+					id="report_package_incomplete_menu" 
+					parent="stock.menu_warehouse_report" 
+					sequence="100" 
+                    />
+
+
+
+	
+		<record model="ir.ui.view" id="report_package_list_form">
+			<field name="name">report.package.list.form</field>
+			<field name="model">report.package.list</field>
+			<field name="arch" type="xml">
+				<form>
+						<group>
+							<group>
+							</group>
+							<group>
+							</group>
+						</group>
+						<footer>
+							<button string="Mostrar" name="get_report" type="object" class="oe_highlight"/>
+                            or
+							<button string="Cancel" class="oe_link" special="cancel"/>
+						</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="report_package_list_action" model="ir.actions.act_window">
+			<field name="name">Reporte de Paquetes Lista</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">report.package.list</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+
+		<menuitem action="report_package_list_action" 
+					id="report_package_list_menu" 
+					parent="stock.menu_warehouse_report" 
+					sequence="101" 
+                    />
+
+
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="logistic_despatch_view_form_inherit_add_clinical_information" model="ir.ui.view">
+        <field name="name">logistic.despatch.view.form.inherit.add.clinical.information</field>
+        <field name="model">logistic.despatch</field>
+        <field name="inherit_id" ref="logistic.view_logistic_despatch_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="clinical_information" string="Información Clínica">
+                    <button string="Áctualizar Información Clínica" name="update_bio_nota_logistic" type="object" class="oe_highlight"/>
+                    <field name="bio_nota" string="" widget="html" readonly="1"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

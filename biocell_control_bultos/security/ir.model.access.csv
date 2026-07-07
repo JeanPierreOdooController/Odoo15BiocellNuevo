@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+stock_quant_package_list_items,stock_quant_package_list_items,model_stock_quant_package_list_items,,1,1,1,1
+stock_quant_package_list,stock_quant_package_list,model_stock_quant_package_list,,1,1,1,1
+stock_quant_package,stock_quant_package,model_stock_quant_package,,1,1,1,1
+stock_package_reposition_items_lotes,stock_package_reposition_items_lotes,model_stock_package_reposition_items_lotes,,1,1,1,1
+stock_package_reposition_items,stock_package_reposition_items,model_stock_package_reposition_items,,1,1,1,1
+stock_package_reposition,stock_package_reposition,model_stock_package_reposition,,1,1,1,1

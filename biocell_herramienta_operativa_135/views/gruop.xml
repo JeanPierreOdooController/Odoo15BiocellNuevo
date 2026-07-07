@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <record id="group_sale_user_bio_cell" model="res.groups">
+            <field name="name">Acceso a configuraciòn</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+            <field name="comment">Permite que puedas tener acceso al menu de configuraciòn.</field>
+        </record>
+
+        <menuitem id="sale.menu_sale_config"
+            name="Configuración"
+            parent="sale.sale_menu_root"
+            sequence="35"
+            groups="biocell_herramienta_operativa_135.group_sale_user_bio_cell"/>
+
+        <menuitem 
+            id="sale_order_template_menu_it_product" 
+            action="sale_management.sale_order_template_action" 
+            parent="sale.product_menu_catalog" 
+            sequence="1" 
+            name="Plantillas de presupuesto"/>
+		<!-- <menuitem 
+			id="menu_sale_category" 
+			name="Tipo de Categorias de ventas" 
+			sequence="2" 
+			action="view_sale_category" 
+			parent="sale.menu_sales_config"
+            groups="sale_management.group_sale_order_template"
+			/> -->
+	</data>	
+</odoo>

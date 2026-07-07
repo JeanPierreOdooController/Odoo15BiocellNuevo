@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <template id="biocell_extensiones_contables_6.stock_report_picking_inherit_add_fields" name="stock.report.picking.inherit.add.fields" inherit_id="stock.report_picking">
+        <!-- Campos nuevos -->
+        <xpath expr="//h1[@t-field='o.name']" position="before">
+            <table style="table-layout:fixed;width:100%">
+                <tr>
+                  <td>
+                    Nombre del Paciente - DNI/RUC:
+                    <br/>
+                    <span t-esc="o.name_patient"/>
+                    -
+                    <span t-esc="o.patient_vat"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Centro Médico:
+                    <br/>
+                    <t t-if="o.medic_center">
+                      <span t-esc="o.medic_center"/>  
+                    </t>
+                    <t t-if="not o.medic_center">
+                      -
+                    </t>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Nombre del Doctor:
+                    <br/>
+                    <t t-if="o.name_doctor">
+                      <span t-esc="o.name_doctor"/>  
+                    </t>
+                    <t t-if="not o.name_doctor">
+                      - 
+                    </t>
+                  </td>
+                </tr>
+              </table>
+        </xpath>
+        <!-- Columna nueva -->
+        <xpath expr="//th[@name='th_serial_number']" position="before">
+            <th name='th_lot_name' class="text-center">
+                <strong>Número de Lote</strong>
+            </th>
+        </xpath>
+        <xpath expr="//td[@t-if='has_serial_number']" position="before">
+            <td class=" text-center">
+              <span t-esc="ml.lot_id.name"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>

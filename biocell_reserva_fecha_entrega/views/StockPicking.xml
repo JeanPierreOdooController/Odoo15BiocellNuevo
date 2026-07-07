@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="stock_picking_view_form_inherit_add_commitment_date" model="ir.ui.view">
+        <field name="name">stock.picking.view.form.inherit.add.commitment.date</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='move_type']" position="after">
+                <label for="commitment_date" string="Fecha de entrega" />
+                <div name="commitment_date_div" class="o_row">
+                    <field name="commitment_date" />
+                    <span name="expected_date_span" class="text-muted">
+                        Esperado: <field name="expected_date" widget="date"/>
+                    </span>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

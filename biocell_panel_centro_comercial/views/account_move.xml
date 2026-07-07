@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="account_move_view_form_inherit_add_shop_id" model="ir.ui.view">
+        <field name="name">account.move.view.form.inherit.add.shop_id</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//field[@name='currency_rate']" position="after">
+                <field name="shop_id" />
+                <field name="serie_domain" invisible="1"/>
+            </xpath>
+            
+            <xpath expr="//field[@name='serie_id']" position="attributes">
+                <!-- Domain anterior  -->
+                <!-- ('company_id','=',company_id),('type_document_id','=',l10n_latam_document_type_id) -->
+                <attribute name="domain">[('company_id','=',company_id),('type_document_id','=',l10n_latam_document_type_id),('id','in',serie_domain)]</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

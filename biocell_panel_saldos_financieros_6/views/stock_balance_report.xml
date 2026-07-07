@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record model="ir.ui.view" id="view_biocell_panel_saldos_financieros_4_tree_lote_clinica">
+		<field name="name">stock.balance.report.lote.clinica.tree</field>
+		<field name="model">stock.balance.report.lote.clinica</field>
+		<field name="arch" type="xml">
+			<tree create="0" edit="0" delete="0">
+				<field name="producto"/>
+				<field name="lote"/>
+				<field name="fecha_venc" />
+				<field name="invoice_ids" widget='many2many_tags' />
+				<field name="codigo"/>
+				<field name="unidad"/>
+				<field name="categoria_1"/>
+				<field name="categoria_2"/>
+				<field name="categoria_3"/>
+				<field name="almacen"/>
+				<field name="entrada" sum="entrada"/>
+				<field name="order_id" />				
+			</tree>
+		</field>
+	</record>
+
+
+
+	<record id="biocell_panel_saldos_financieros_4_filter_lote_clinica" model="ir.ui.view">
+		<field name="name">stock.balance.report.lote.clinica.filter</field>
+		<field name="model">stock.balance.report.lote.clinica</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="producto"/>
+				<field name="lote"/>
+				<field name="almacen"/>
+				<field name="codigo"/>
+				<field name="unidad"/>
+				<field name="order_id" />				
+				<group expand="0" string="Group By">
+					<filter string="Producto" name="producto" domain="[]" context="{'group_by': 'producto'}"/>
+					<filter string="Almacen" name="almacen" domain="[]" context="{'group_by': 'almacen'}"/>
+					<filter string="Codigo" name="codigo" domain="[]" context="{'group_by': 'codigo'}"/>
+					<filter string="Pedido" name="order_id" domain="[]" context="{'group_by': 'order_id'}"/>								
+				</group>
+			</search>
+		</field>
+	</record>
+
+	<record id="biocell_panel_saldos_financieros_4_pivot_lote_clinica" model="ir.ui.view">
+		<field name="name">stock.balance.report.lote.clinica.pivot</field>
+		<field name="model">stock.balance.report.lote.clinica</field>
+		<field name="arch" type="xml">
+			<pivot string="Reporte Saldos">
+				<field name="almacen" type="row"/>
+				<field name="producto" type="col"/>
+				<field name="lote" type="col"/>
+				<field name="saldo" type="measure"/>
+			</pivot>
+		</field>
+	</record>
+	
+	<record id="biocell_panel_saldos_financieros_4_graph_lote_clinica" model="ir.ui.view">
+		<field name="name">stock.balance.report.lote.clinica.graph</field>
+		<field name="model">stock.balance.report.lote.clinica</field>
+		<field name="arch" type="xml">
+			<graph string="Grafico Saldos" type="line">
+				<field name="almacen" type="col"/>
+				<field name="saldo" type="measure"/>
+			</graph>
+		</field>
+	</record>
+
+
+		<record model="ir.ui.view" id="view_biocell_panel_saldos_financieros_4_lote_wizard_clinica">
+			<field name="name">stock.balance.report.lote.wizard.clinica.form</field>
+			<field name="model">stock.balance.report.lote.wizard.clinica</field>
+			<field name="arch" type="xml">
+				<form string="Saldos x Lote Clinica">
+					<group>
+						<group>
+							<h1>Desea generar Saldos por Lotes Clinicas?</h1>
+						</group>
+					</group>
+					<footer>
+						<button string="Generar" name="get_stock_lote" type="object" class="oe_highlight" onlyRead="1"/>
+						or
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+
+
+
+		<record id="action_balance_report_lote_clinica" model="ir.actions.act_window">
+			<field name="name">Saldos x Lote Clinicas</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">stock.balance.report.lote.wizard.clinica</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+
+
+
+
+	<menuitem id="menu_balance_report_lote_clinica"
+			action="action_balance_report_lote_clinica"
+			parent="stock.menu_stock_warehouse_mgmt"
+			sequence="4"/>
+
+	<menuitem id="menu_balance_report_sale_lote_clinica"
+			action="action_balance_report_lote_clinica"
+			parent="sale.menu_sale_report"
+			sequence="4"/>
+
+
+
+<!-- #reporte nativo de odoo -->
+
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="group_biocell_consulta_identidad_peru_root" model="res.groups">
+			<field name="name">Parametros Consulta RUC/DNI</field>
+			<field name="category_id" ref="base.module_category_hidden"/>
+		</record>
+		<record id="group_tables_root" model="res.groups">
+			<field name="name">Configuración: Tablas</field>
+			<field name="category_id" ref="base.module_category_hidden"/>
+		</record>
+	</data>
+</odoo>
