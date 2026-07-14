@@ -65,7 +65,7 @@ class SqlExport(models.Model):
 
     def export_sql_query(self):
         self.ensure_one()
-        wiz = self.env["sql.file.wizard"].create({"biocell_descarga_consultas_sql_id": self.id})
+        wiz = self.env["sql.file.wizard"].create({"sql_export_id": self.id})
         # no variable input, we can return the file directly
         if not self.field_ids:
             return wiz.export_sql()
