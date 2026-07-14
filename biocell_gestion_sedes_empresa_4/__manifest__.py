@@ -19,7 +19,7 @@
     'version': '15.0.1.0.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['biocell_pe_facturacion_electronica_despatch', 'biocell_pe_facturacion_electronica_company_branch'],
+    'depends': ['biocell_pe_facturacion_electronica', 'biocell_gestion_sedes_empmresa_4'],
 
     # always loaded
     'data': [
