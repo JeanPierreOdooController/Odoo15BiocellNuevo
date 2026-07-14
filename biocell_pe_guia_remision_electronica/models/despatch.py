@@ -337,7 +337,7 @@ class LogisticDespatch(models.Model):
         self.ensure_one()
         if self.company_id.country_id.code == 'PE':
             custom_report = {
-                'logistic.report_despatch_document': 'biocell_pe_facturacion_electronica_despatch.report_despatch_document',
+                'logistic.report_despatch_document': 'biocell_pe_facturacion_electronica.report_despatch_document',
             }
             return custom_report.get(report_xml_id) or report_xml_id
         return super()._get_name_despatch_report(report_xml_id)
@@ -347,7 +347,7 @@ class LogisticDespatch(models.Model):
             message loaded by default
         """
         res = super(LogisticDespatch, self).action_despatch_sent()
-        template = self.env.ref('biocell_pe_facturacion_electronica_despatch.email_template_edi_despatch', raise_if_not_found=False)
+        template = self.env.ref('biocell_pe_facturacion_electronica.email_template_edi_despatch', raise_if_not_found=False)
         if template:
             res['context'].update({'default_template_id': template and template.id or False})
         return res
