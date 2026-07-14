@@ -6,7 +6,7 @@
     'author': 'ITGRUPO, Jhorel Revilla Calderon',
     'license': 'LGPL-3',
     'depends': [
-        'biocell_pe_facturacion_electronica_despatch'
+        'biocell_pe_facturacion_electronica'
     ],
     'data': [
         'views/report_inherit.xml'
