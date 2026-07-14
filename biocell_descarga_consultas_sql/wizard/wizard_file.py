@@ -18,7 +18,7 @@ class SqlFileWizard(models.TransientModel):
 
     binary_file = fields.Binary("File", readonly=True)
     file_name = fields.Char("File Name", readonly=True)
-    biocell_descarga_consultas_sql_id = fields.Many2one(comodel_name="sql.export", required=True)
+    sql_export_id = fields.Many2one(comodel_name="sql.export", required=True)
 
     @api.model
     def fields_view_get(
