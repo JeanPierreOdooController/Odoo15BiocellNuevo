@@ -10,7 +10,7 @@ class CostsSalesAnalysisWizard(models.TransientModel):
 
 	def get_report(self):
 		self.env.cr.execute("""
-		DROP VIEW IF EXISTS costs_sales_analysis_book_biocell;
+		DROP TABLE IF EXISTS costs_sales_analysis_book_biocell;
 		CREATE table costs_sales_analysis_book_biocell as ("""+self._get_sql_report(self.period.date_start,self.period.date_end,self.company_id.id)+""")""")
 		if self.type_show == 'pantalla':
 			return {
