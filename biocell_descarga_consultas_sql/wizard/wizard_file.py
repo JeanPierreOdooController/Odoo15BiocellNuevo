@@ -56,7 +56,7 @@ class SqlFileWizard(models.TransientModel):
 
     def export_sql(self):
         self.ensure_one()
-        biocell_descarga_consultas_sql = self.biocell_descarga_consultas_sql_id
+        biocell_descarga_consultas_sql = self.sql_export_id
 
         # Manage Params
         variable_dict = {}
@@ -99,7 +99,7 @@ class SqlFileWizard(models.TransientModel):
     
     def button_preview_sql_expression(self):
         self.ensure_one()
-        biocell_descarga_consultas_sql = self.biocell_descarga_consultas_sql_id
+        biocell_descarga_consultas_sql = self.sql_export_id
         # Manage Params
         variable_dict = {}
         if biocell_descarga_consultas_sql.field_ids:
