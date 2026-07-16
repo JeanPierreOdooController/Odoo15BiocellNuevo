@@ -7,7 +7,7 @@
     'license': 'LGPL-3',
     'depends': [
         'sale',
-        'biocell_panel_saldos_financieros_4_lote'
+        'biocell_panel_saldos_financieros_5'
     ],
     'data': [
         'data/biocell_conector_powerbi_key.xml',
