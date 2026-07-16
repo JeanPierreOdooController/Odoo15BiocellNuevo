@@ -10,7 +10,7 @@
     #     'sale',
     #     'project',
     #     'account'
-        'biocell_panel_saldos_financieros_4','biocell_panel_saldos_financieros_4_lote'
+        'biocell_panel_saldos_financieros_4','biocell_panel_saldos_financieros_5'
     ],
     'data': [
         # 'security/ir.model.access.csv',
