@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from odoo import api, models, fields
-from odoo.exceptions import UserError, ValidationError
 
 import logging
 log = logging.getLogger(__name__)
@@ -17,7 +16,6 @@ class AccountMove(models.Model):
     def _l10n_pe_prepare_dte(self):
         res = super(AccountMove, self)._l10n_pe_prepare_dte()
         seq_split = self.ref.split('-')
-        raise UserError(str(seq_split))
         if len(seq_split)==2:
             dte_serial = seq_split[0]
             dte_number = seq_split[1]
