@@ -15,7 +15,7 @@ Integracion de catalogos de sunat IT Grupo con facturacion electronica internaci
     'version': '15.0.1.0.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['biocell_pe_facturacion_electronica', 'biocell_nucleo_contable_operativo_2', 'biocell_gestion_devoluciones_comerciales','biocell_pe_facturacion_electronica_company_branch'],
+    'depends': ['biocell_pe_facturacion_electronica', 'biocell_nucleo_contable_operativo_2', 'biocell_gestion_devoluciones_comerciales','biocell_gestion_sedes_empresa_4'],
 
     # always loaded
     'data': [
