@@ -13,6 +13,6 @@
     'website': "https://conflux.pe",
     'category': 'Localization/Peru',
     'version': '15.0.1.0.0',
-    'depends': ['biocell_pe_facturacion_electronica_transportrefs','biocell_logistica_operativa'],
+    'depends': ['biocell_pe_facturacion_electronica_2','biocell_logistica_operativa'],
     'data': []
 }
