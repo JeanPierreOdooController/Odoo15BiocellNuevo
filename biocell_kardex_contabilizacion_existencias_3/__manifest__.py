@@ -3,7 +3,7 @@
 	'name': 'Reporte de Detalle de Ingreso y salida',
 	'category': 'stock',
 	'author': 'ITGRUPO, Sebastian Moises Loraico Lopez',
-	'depends': ['biocell_kardex_contabilizacion_existencias_advance'],
+	'depends': ['biocell_kardex_contabilizacion_existencias_2'],
 	'version': '1.0',
 	'description':"""
 	- Detalle de Movimientos en Asientos Contables
